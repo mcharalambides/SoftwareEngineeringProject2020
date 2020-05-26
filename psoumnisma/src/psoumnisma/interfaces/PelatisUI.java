@@ -5,11 +5,12 @@
  */
 
 package psoumnisma.interfaces;
+import javax.swing.JFrame;
+import javax.swing.table.TableColumn;
+import javax.swing.*;
+import java.awt.event.*;
+import java.lang.*;
 
-/**
- *
- * @author Marios
- */
 public class PelatisUI extends javax.swing.JFrame {
 
     /** Creates new form PelatisUI */
@@ -17,6 +18,8 @@ public class PelatisUI extends javax.swing.JFrame {
         initComponents();
         offersPanel.setVisible(false);
     }
+              
+            
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -131,6 +134,11 @@ public class PelatisUI extends javax.swing.JFrame {
 
         editAddress.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         editAddress.setText("edit");
+        editAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editAddressActionPerformed(evt);
+            }
+        });
 
         editEmail.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         editEmail.setText("edit");
@@ -194,6 +202,16 @@ public class PelatisUI extends javax.swing.JFrame {
         menuBar.add(jMenu1);
 
         jMenu2.setText("Create List");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                action2(evt);
+            }
+        });
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                action1(evt);
+            }
+        });
         menuBar.add(jMenu2);
 
         jMenu3.setText("Completed Lists");
@@ -343,6 +361,27 @@ public class PelatisUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_editFirstActionPerformed
 
+    private void editAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editAddressActionPerformed
+
+    private void action1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_action1
+    }//GEN-LAST:event_action1
+
+    private void action2(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_action2
+        ListaUI listUI = new ListaUI();
+        listUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        listUI.setSize(900,600);
+        listUI.setVisible(true);
+
+        String array[] = {"Γαλα","Ψωμι","Δημητριακα","Καφές"};
+
+        JComboBox combobox = new JComboBox(array);
+        TableColumn column1 = listUI.jTable1.getColumnModel().getColumn(0);
+        column1.setCellEditor(new DefaultCellEditor(combobox));
+    }//GEN-LAST:event_action2
+
+   
     /**
      * @param args the command line arguments
      */
@@ -399,7 +438,7 @@ public class PelatisUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    public javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
