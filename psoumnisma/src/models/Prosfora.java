@@ -7,6 +7,12 @@ public class Prosfora {
     private String description;
     private String deadline;
 
+    public Prosfora(String storeName, String itemName, String description, String deadline){
+        this.storeName = storeName;
+        this.itemName = itemName;
+        this.description = description;
+        this.deadline = deadline;
+    }
     
     public void setStoreName(String storeName) {
         this.storeName = storeName;
