@@ -11,8 +11,8 @@ public class Magazatoras {
     private int[] coordinates;
     private File image;
     private int rating;
-    //private list<Paraggelia> orderList;
-    //private list<Product> productList;
+    private List<Paraggelia> orderList;
+    private List<Proion> productList;
     private double discount;
     
 }
