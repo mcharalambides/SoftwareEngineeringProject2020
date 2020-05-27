@@ -13,7 +13,11 @@ import java.util.List;
  */
 public class PremiumPelatis extends Pelatis {
     private int points;
-   private List<Prosfora> offers;
+    private List<Prosfora> offers;
+    
+    public PremiumPelatis(Pelatis pelatis){
+        super(pelatis.getName(),pelatis.getSurname(),pelatis.getEmail(),pelatis.getPassword(),pelatis.getTelephoneNumber(),pelatis.getPassword());
+    }
   // private List<Proion> favouriteItemsList;         
             
 //public void setOffers(List<Prosfora> offers){

@@ -89,9 +89,19 @@ public class ListaUI extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jMenu1.setText("Home");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HomeClicked(evt);
+            }
+        });
         menuBar.add(jMenu1);
 
         jMenu2.setText("Create List");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CreateListClicked(evt);
+            }
+        });
         menuBar.add(jMenu2);
 
         jMenu3.setText("Completed Lists");
@@ -166,6 +176,16 @@ public class ListaUI extends javax.swing.JFrame {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void HomeClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeClicked
+        this.dispose();
+    }//GEN-LAST:event_HomeClicked
+
+    private void CreateListClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CreateListClicked
+        this.dispose();
+        ListaUI listaCopy = new ListaUI();
+        listaCopy.setVisible(true);
+    }//GEN-LAST:event_CreateListClicked
 
     /**
      * @param args the command line arguments
