@@ -1,0 +1,3 @@
+name,password,telephoneNumber,address,rating,discount,items
+Sklavenitis,12314,6985412563,28 oktomvriou,4,25,Γάλα Ψωμί
+Papantoniou,1486,6985471425,Papandreou 23,6,15,Ψωμί Δημιτριακά

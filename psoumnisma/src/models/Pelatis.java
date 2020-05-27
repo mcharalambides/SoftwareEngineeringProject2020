@@ -8,8 +8,9 @@ public class Pelatis {
     private String telephoneNumber;
     private String address;
     private int coordinates[];
+    private Boolean premium;
     
-    public Pelatis(String name,String surname,String email,String password,String telephoneNumber,String address){
+    public Pelatis(String name,String surname,String email,String password,String telephoneNumber,String address,Boolean premium){
         this.name = name;
         this.surname = surname;
         this.address = address;
@@ -17,7 +18,14 @@ public class Pelatis {
         this.password = password;
         this.telephoneNumber = telephoneNumber;
         this.address = address;
+        this.premium = premium;
+        
+        }
+
+    public Boolean getPremium() {
+        return premium;
     }
+        
 
     public String getName() {
         return name;

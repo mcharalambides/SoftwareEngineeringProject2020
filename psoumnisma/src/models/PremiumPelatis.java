@@ -16,7 +16,7 @@ public class PremiumPelatis extends Pelatis {
     private List<Prosfora> offers;
     
     public PremiumPelatis(Pelatis pelatis){
-        super(pelatis.getName(),pelatis.getSurname(),pelatis.getEmail(),pelatis.getPassword(),pelatis.getTelephoneNumber(),pelatis.getPassword());
+        super(pelatis.getName(),pelatis.getSurname(),pelatis.getEmail(),pelatis.getPassword(),pelatis.getTelephoneNumber(),pelatis.getPassword(),pelatis.getPremium());
     }
   // private List<Proion> favouriteItemsList;         
             

@@ -4,18 +4,25 @@
  * and open the template in the editor.
  */
 package psoumnisma.interfaces;
+import models.Lista;
+import models.PinakasApotelesmatwn;
+import java.util.List;
+import java.util.ArrayList;
+
 
 /**
  *
  * @author Christos
  */
 public class ListaUI extends javax.swing.JFrame {
+    Lista list;
 
     /**
      * Creates new form ListaUI
      */
     public ListaUI() {
         initComponents();
+        
     }
 
     /**
@@ -54,18 +61,21 @@ public class ListaUI extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel5.setText("Min Rating");
 
+        jTextField1.setText("0");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
 
+        jTextField2.setText("0");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
 
+        jTextField3.setText("0");
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
@@ -74,6 +84,11 @@ public class ListaUI extends javax.swing.JFrame {
 
         submit.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         submit.setText("SUBMIT");
+        submit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,10 +134,6 @@ public class ListaUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(submit)
-                .addGap(272, 272, 272))
             .addGroup(layout.createSequentialGroup()
                 .addGap(188, 188, 188)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,6 +152,10 @@ public class ListaUI extends javax.swing.JFrame {
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(submit)
+                .addGap(223, 223, 223))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,9 +172,9 @@ public class ListaUI extends javax.swing.JFrame {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(100, 100, 100)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(257, 257, 257)
+                .addGap(123, 123, 123)
                 .addComponent(submit)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pack();
@@ -186,6 +201,18 @@ public class ListaUI extends javax.swing.JFrame {
         ListaUI listaCopy = new ListaUI();
         listaCopy.setVisible(true);
     }//GEN-LAST:event_CreateListClicked
+
+    private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
+        List<String> list = new ArrayList<String>();
+        
+        for(int i=0; i<jTable1.getRowCount(); i++)
+            if(jTable1.getValueAt(i,0) != null)
+            list.add(jTable1.getValueAt(i,0).toString());
+        
+        Lista lista = new Lista(Double.parseDouble(jTextField3.getText()),Integer.parseInt(jTextField1.getText()),Integer.parseInt(jTextField2.getText()),list);
+        PinakasApotelesmatwn pinakas = new PinakasApotelesmatwn(lista);
+        
+    }//GEN-LAST:event_submitActionPerformed
 
     /**
      * @param args the command line arguments

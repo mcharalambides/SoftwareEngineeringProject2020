@@ -24,6 +24,10 @@ public class PelatisUI extends javax.swing.JFrame {
         this.address.setText(pelatis.getAddress());
         this.telephone.setText(pelatis.getTelephoneNumber());
         this.password.setText(pelatis.getPassword());
+        
+        if(pelatis.getPremium()){
+            offersPanel.setVisible(true);
+        }
     }
               
             
