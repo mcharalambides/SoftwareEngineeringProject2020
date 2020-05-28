@@ -21,6 +21,10 @@ public class Lista {
         this.itemList.add(item);
     }
 
+    public List<String> getItemList() {
+        return itemList;
+    }
+
         
     public void setFilters(double maxDistance, int maxCost, int maxRating) {
         this.maxDistance = maxDistance;
@@ -28,6 +32,11 @@ public class Lista {
         this.maxRating = maxRating;
     }
     
+    
     /*public boolean validateList() {
     }*/
+
+    public String getItemList(int index) {
+        return itemList.get(index);
+    }
 }

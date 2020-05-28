@@ -205,13 +205,16 @@ public class ListaUI extends javax.swing.JFrame {
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
         List<String> list = new ArrayList<String>();
         
-        for(int i=0; i<jTable1.getRowCount(); i++)
+        for(int i=0; i<jTable1.getRowCount(); i++){
             if(jTable1.getValueAt(i,0) != null)
             list.add(jTable1.getValueAt(i,0).toString());
+        }
+        
         
         Lista lista = new Lista(Double.parseDouble(jTextField3.getText()),Integer.parseInt(jTextField1.getText()),Integer.parseInt(jTextField2.getText()),list);
         PinakasApotelesmatwn pinakas = new PinakasApotelesmatwn(lista);
-        
+        ResultsScreenUI results = new ResultsScreenUI(pinakas);
+        results.setVisible(true);
     }//GEN-LAST:event_submitActionPerformed
 
     /**

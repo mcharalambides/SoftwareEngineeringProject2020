@@ -9,7 +9,12 @@ import javax.swing.JFrame;
 import javax.swing.table.TableColumn;
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.lang.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import models.*;
 
 public class PelatisUI extends javax.swing.JFrame {
@@ -385,11 +390,23 @@ public class PelatisUI extends javax.swing.JFrame {
         listUI.setSize(900,600);
         listUI.setVisible(true);
 
-        String array[] = {"Γαλα","Ψωμι","Δημητριακα","Καφές"};
+        String array[] = {"Γάλα","Ψωμί","Δημητριακά","Καφές"};
+        try{
+        BufferedReader csvReader = new BufferedReader(new FileReader("src/magazatores.txt"));
+        String row;
+        Set<String> shopItems = new HashSet<String>();
+         while ((row = csvReader.readLine())!= null) {
+             String[] data = row.split(",");
+             shopItems.addAll(Arrays.asList(data[6].split(" "))); 
+         }
 
-        JComboBox combobox = new JComboBox(array);
+        JComboBox combobox = new JComboBox(shopItems.toArray());
         TableColumn column1 = listUI.jTable1.getColumnModel().getColumn(0);
         column1.setCellEditor(new DefaultCellEditor(combobox));
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_action2
 
    

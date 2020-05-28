@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package psoumnisma.interfaces;
+import models.PinakasApotelesmatwn;
 
 /**
  *
@@ -11,11 +8,12 @@ package psoumnisma.interfaces;
  */
 public class ResultsScreenUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ResultsScreenUI
-     */
-    public ResultsScreenUI() {
+    public ResultsScreenUI(PinakasApotelesmatwn pinakas) {
         initComponents();
+        for(int i=0; i<pinakas.getSizeOfPinaka(); i++){
+            this.resultsTable.setValueAt(pinakas.getStoreName(i),i,1);
+            this.resultsTable.setValueAt(pinakas.getStoreRating(i), i,4);
+        }
     }
 
     /**
