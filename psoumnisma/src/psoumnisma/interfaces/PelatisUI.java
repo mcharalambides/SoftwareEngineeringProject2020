@@ -12,9 +12,13 @@ import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.lang.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 import models.*;
 
 public class PelatisUI extends javax.swing.JFrame {
@@ -231,6 +235,11 @@ public class PelatisUI extends javax.swing.JFrame {
         menuBar.add(jMenu2);
 
         jMenu3.setText("Completed Lists");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
         menuBar.add(jMenu3);
 
         jMenu4.setText("FAVOURITE PRODUCTS");
@@ -408,6 +417,48 @@ public class PelatisUI extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_action2
+
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+            PaliaListaUI oldlistUI = new PaliaListaUI();
+             oldlistUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+             oldlistUI.setSize(900,600);
+             oldlistUI.setVisible(true);
+             
+             //try {
+            //BufferedReader br = new BufferedReader(new FileReader("src/palieslistes"));
+            // get the first line
+            // get the columns name from the first line
+            // set columns name to the jtable model
+            //String firstLine = br.readLine().trim();
+            //String[] columnsName = firstLine.split(",");
+            //DefaultTableModel model = (DefaultTableModel)oldlistUI.resultsTable.getModel();
+            //model.setColumnIdentifiers(columnsName);
+            
+            // get lines from txt file
+            //Object[] tableLines = br.lines().toArray();
+            
+            // extratct data from lines
+            // set data to jtable model
+            //for(int i = 0; i < tableLines.length; i++)
+            //{
+              //  String line = tableLines[i].toString().trim();
+                //String[] dataRow = line.split("/");
+                //model.addRow(dataRow);
+           // }
+            
+            
+        //} catch (Exception ex) {
+         //   Logger.getLogger(PelatisUI.class.getName()).log(Level.SEVERE, null, ex);
+        //}
+             
+        
+        
+        
+ 
+
+       
+             
+    }//GEN-LAST:event_jMenu3MouseClicked
 
    
     /**
