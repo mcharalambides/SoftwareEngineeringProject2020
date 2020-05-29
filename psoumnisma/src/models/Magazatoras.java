@@ -14,6 +14,19 @@ public class Magazatoras {
     private List<Paraggelia> orderList;
     private List<Proion> productList;
 
+    
+    public Magazatoras(String name,String password,int telephoneNumber,String address,int[] coordinates,File image,int rating,List orderList,List productList){
+        this.name = name;
+        this.password = password;
+        this.telephoneNumber = telephoneNumber;
+        this.address = address;
+        this.coordinates = coordinates;
+        this.image = image;
+        this.rating = rating;
+        this.orderList = orderList;
+        this.productList = productList;  
+    }
+    
     public String getName() {
         return name;
     }

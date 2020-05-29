@@ -5,7 +5,7 @@
  */
 package psoumnisma;
 import javax.swing.JFrame;
-import psoumnisma.interfaces.PelatisUI;
+import psoumnisma.interfaces.SindesiUI;
 import models.*;
 import psoumnisma.interfaces.MagazatorasUI;
 
@@ -19,15 +19,16 @@ public class Psoumnisma {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Pelatis pelatis1 = new Pelatis("Marios","Charalambides","mcharalampidis@ceid.upatras.gr","1234","6941523843","Mourouzi 25",false);
-        Pelatis pelatis2 = new Pelatis("Pavlos","Kwnstantinou","pavlkwn@ceid.upatras.gr","5678","6942569831","Gkotsi 28",false);
-        Pelatis pelatis3 = new Pelatis("Rafel","Neofytou","rafaneof@ceid.upatras.gr","4786","694785831","Giannitswn 15",true);
+        //Pelatis pelatis1 = new Pelatis("Marios","Charalambides","mcharalampidis@ceid.upatras.gr","1234","6941523843","Mourouzi 25",false);
+        //Pelatis pelatis2 = new Pelatis("Pavlos","Kwnstantinou","pavlkwn@ceid.upatras.gr","5678","6942569831","Gkotsi 28",false);
+        //Pelatis pelatis3 = new Pelatis("Rafael","Neofytou","rafaneof@ceid.upatras.gr","4786","6947858311","Giannitswn 15",true);
+        //Pelatis pelatis4 = new Pelatis("Christos","Costa","chkosta@ceid.upatras.gr","9933","6957849000","Favierou 23",true);
         
-        PelatisUI pelatis = new PelatisUI(pelatis3);
+        SindesiUI sindesi = new SindesiUI();
         
-        pelatis.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        pelatis.setSize(900,600);
-        pelatis.setVisible(true);
+        sindesi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        sindesi.setSize(900,600);
+        sindesi.setVisible(true);
         
         //Magazatoras
         //Magazatoras magaz1 = new Magazatoras();
