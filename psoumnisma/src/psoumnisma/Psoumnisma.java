@@ -7,6 +7,7 @@ package psoumnisma;
 import javax.swing.JFrame;
 import psoumnisma.interfaces.PelatisUI;
 import models.*;
+import psoumnisma.interfaces.MagazatorasUI;
 
 /**
  *
@@ -31,11 +32,11 @@ public class Psoumnisma {
         //Magazatoras
         //Magazatoras magaz1 = new Magazatoras();
         
-        //MagazatorasUI magaz = new MagazatorasUI(magaz1);
+        //MagazatorasUI magazUI = new MagazatorasUI();
         
-        //magaz.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //magaz.setSize(900,600);
-        //magaz.setVisible(true);
+        //magazUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //magazUI.setSize(900,600);
+        //magazUI.setVisible(true);
     }
     
 }

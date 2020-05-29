@@ -5,6 +5,9 @@
  */
 package psoumnisma.interfaces;
 
+import javax.swing.JFrame;
+import pop_up_windows.addOffer;
+
 /**
  *
  * @author Marios
@@ -286,10 +289,11 @@ public class MagazatorasUI extends javax.swing.JFrame {
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         // TODO add your handling code here:
-        MagazatorasUI magazUI = new MagazatorasUI();
-        magazUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        magazUI.setSize(900,600);
-        magazUI.setVisible(true);
+        addOffer offer = new addOffer();
+        
+        offer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        offer.setSize(900,600);
+        offer.setVisible(true);
     }//GEN-LAST:event_jMenu2MouseClicked
 
     /**
