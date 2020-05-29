@@ -27,6 +27,15 @@ public class Psoumnisma {
         pelatis.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pelatis.setSize(900,600);
         pelatis.setVisible(true);
+        
+        //Magazatoras
+        //Magazatoras magaz1 = new Magazatoras();
+        
+        //MagazatorasUI magaz = new MagazatorasUI(magaz1);
+        
+        //magaz.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //magaz.setSize(900,600);
+        //magaz.setVisible(true);
     }
     
 }
