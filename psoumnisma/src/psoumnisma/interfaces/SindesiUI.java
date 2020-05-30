@@ -63,6 +63,16 @@ public class SindesiUI extends javax.swing.JFrame {
 
         combobox.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pelatis", "Magazatoras" }));
+        combobox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                menusChanges(evt);
+            }
+        });
+        combobox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboboxActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
         jLabel1.setText("PSOUMNISMA");
@@ -175,20 +185,31 @@ public class SindesiUI extends javax.swing.JFrame {
         }
         else if (combobox.getSelectedIndex() == 1)
         {
-            BufferedReader in = new BufferedReader(new FileReader("src/magazatores2.txt"));
-            String str;
-
-            List<String> list = new ArrayList<String>();
-            while((str = in.readLine()) != null){
-                list.add(str);
+            BufferedReader in2 = new BufferedReader(new FileReader("src/magazatores2.txt"));
+            String strMag;
+            String username;
+            String password;
+            Boolean flag = false;
+            String copy[] = new String[8];
+            strMag = in2.readLine();
+            
+            while(strMag != null){
+                username = strMag.split(",")[0];
+                password = strMag.split(",")[1];
+                if(username.equals(this.email.getText()) && password.equals(this.password.getText())){
+                    copy = strMag.split(",").clone();
+                    flag = true;
+                    break;
+                }
+                strMag = in2.readLine();
             }
 
-            String[] stringArr = list.toArray(new String[0]);
+            //String[] stringArr = list.toArray(new String[0]);
 
-            String[] fields = stringArr[0].split("\\,");
+            //String[] fields = stringArr[0].split(",");
             
-            if (str2.equals(fields[0]) && str3.equals(fields[1])){
-                Magazatoras magazatoras1 = new Magazatoras(fields[0],fields[1],Long.parseLong(fields[2]),fields[3],Integer.parseInt(fields[4]),Integer.parseInt(fields[5]),Float.parseFloat(fields[6]),Arrays.asList(fields[7]));
+            if (flag){
+                Magazatoras magazatoras1 = new Magazatoras(copy[0],copy[1],Long.parseLong(copy[2]),copy[3],Integer.parseInt(copy[4]),Integer.parseInt(copy[5]),Float.parseFloat(copy[6]),Arrays.asList(copy[7]));
                 MagazatorasUI magazatoras = new MagazatorasUI(magazatoras1);
                 magazatoras.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 magazatoras.setSize(900,600);
@@ -207,6 +228,17 @@ public class SindesiUI extends javax.swing.JFrame {
     private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordActionPerformed
+
+    private void comboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboboxActionPerformed
+
+    private void menusChanges(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_menusChanges
+        if(this.combobox.getSelectedIndex() == 1)
+            this.jLabel3.setText("Shop Name");
+        else
+            this.jLabel3.setText("Email");
+    }//GEN-LAST:event_menusChanges
 
     /**
      * @param args the command line arguments

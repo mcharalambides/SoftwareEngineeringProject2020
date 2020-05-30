@@ -428,7 +428,6 @@ public class PelatisUI extends javax.swing.JFrame {
         listUI.setSize(900,600);
         listUI.setVisible(true);
 
-        String array[] = {"Γάλα","Ψωμί","Δημητριακά","Καφές"};
         try{
         BufferedReader csvReader = new BufferedReader(new FileReader("src/magazatores.txt"));
         String row;
@@ -456,7 +455,7 @@ public class PelatisUI extends javax.swing.JFrame {
                             
               DefaultTableModel table = new DefaultTableModel();
               table.addColumn("id");
-              table.addColumn("Shop NAme");
+              table.addColumn("Shop Name");
               table.addColumn("Date");
               table.addColumn("Cost");
               table.addColumn("Distance");
