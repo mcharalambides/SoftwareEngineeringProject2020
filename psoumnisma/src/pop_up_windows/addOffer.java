@@ -25,11 +25,10 @@ import javax.swing.table.TableColumn;
  */
 public class addOffer extends javax.swing.JFrame {
 
-    /**
-     * Creates new form addOffer
-     */
-    public addOffer() {
+    private String shopname;
+    public addOffer(String shopname) {
         initComponents();
+        this.shopname=shopname;
     }
     
     
@@ -88,7 +87,7 @@ public class addOffer extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(0, 117, Short.MAX_VALUE))
+                        .addGap(0, 126, Short.MAX_VALUE))
                     .addComponent(jTextField2))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -131,10 +130,10 @@ public class addOffer extends javax.swing.JFrame {
         // TODO add your handling code here:
         BufferedWriter writeTable = null;
  try {  
-            writeTable = new BufferedWriter(new FileWriter("src/addoffer.txt")); 
+            writeTable = new BufferedWriter(new FileWriter("src/addoffer.txt",true)); 
             String str = jTextField1.getText();
             String str2 = jTextField2.getText(); 
-            writeTable.write(str +" , "+ str2);  
+            writeTable.write(str +","+ str2+","+shopname);  
             writeTable.newLine();
             writeTable.close();  
               
@@ -149,37 +148,8 @@ public class addOffer extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(addOffer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(addOffer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(addOffer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(addOffer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new addOffer().setVisible(true);
-            }
-        });
-    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -304,7 +304,7 @@ public class MagazatorasUI extends javax.swing.JFrame {
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         // TODO add your handling code here:
-        addOffer offer = new addOffer();
+        addOffer offer = new addOffer(this.shopName.getText());
         
         offer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         offer.setSize(900,600);

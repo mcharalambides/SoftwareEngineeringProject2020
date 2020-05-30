@@ -37,28 +37,9 @@ public class PelatisUI extends javax.swing.JFrame {
         
         if(pelatis.getPremium()){
             offersPanel.setVisible(true);
+            populateOffer();
         }
-       //try{
-         //  BufferedReader br = new BufferedReader(new FileReader("src/addoffer.txt"));
-           //DefaultTableModel model = (DefaultTableModel)offersTable.getModel();
-           
-           //Object[] tableLines = br.lines().toArray();
-           
-           //for(int i=0; i<tableLines.length; i++)
-           //{
-             //  String line = tableLines[i].toString().trim();
-              // String[] dataRow = line.split(",");
-               
-           //}
-           //}
-           //catch (IOException e) {  
-            //e.printStackTrace();  
-        //} 
-       //}
-        
-        
-        
-        
+       
         
         
     }
@@ -477,16 +458,7 @@ public class PelatisUI extends javax.swing.JFrame {
             e.printStackTrace();
         }
             
-             
-             
-    
-             
-        
-        
-        
- 
-
-       
+            
              
     }//GEN-LAST:event_jMenu3MouseClicked
 
@@ -501,6 +473,35 @@ public class PelatisUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu5MouseClicked
 
    
+    private void populateOffer(){
+        try{       
+              BufferedReader in = new BufferedReader(new FileReader("src/addoffer.txt"));
+                                    
+              DefaultTableModel table = new DefaultTableModel();
+              table.addColumn("Products");
+              table.addColumn("Description");
+              table.addColumn("Shop name");
+         
+              String row;
+              int i=0;
+              while ((row = in.readLine())!= null) {
+              table.insertRow(i, row.split(",").clone());
+              i++;
+              //"0","Arapis","19/06/2019","20","20"
+              }
+              
+              this.offersTable.setModel(table);
+      
+                
+                
+        }
+        
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        
+    }
+    
     /**
      * @param args the command line arguments
      */

@@ -1,1 +1,2 @@
-Psomi 1+1
+psomi,20%,AB
+gala,50%,AB
