@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package psoumnisma.interfaces;
+import  pop_up_windows.RATE;
 
 import javax.swing.JFrame;
 
@@ -42,7 +43,7 @@ public class PaliaListaUI extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         alphabetical.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         alphabetical.setText("Date");
@@ -155,6 +156,9 @@ public class PaliaListaUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int row = this.resultsTable.getSelectedRow();
+        RATE rate = new RATE(resultsTable.getValueAt(row,0).toString());
+        rate.setVisible(true);
+        rate.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

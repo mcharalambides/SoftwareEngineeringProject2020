@@ -408,6 +408,7 @@ public class PelatisUI extends javax.swing.JFrame {
         listUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         listUI.setSize(900,600);
         listUI.setVisible(true);
+        listUI.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         try{
         BufferedReader csvReader = new BufferedReader(new FileReader("src/magazatores.txt"));
@@ -431,7 +432,8 @@ public class PelatisUI extends javax.swing.JFrame {
             try{       
               BufferedReader in = new BufferedReader(new FileReader("src/palieslistes.txt"));
               PaliaListaUI palies = new PaliaListaUI();
-              palies.setVisible(true);              
+              palies.setVisible(true);  
+              palies.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
               
                             
               DefaultTableModel table = new DefaultTableModel();
