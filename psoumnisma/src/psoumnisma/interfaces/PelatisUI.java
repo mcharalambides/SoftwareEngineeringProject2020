@@ -11,6 +11,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 import java.lang.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,6 +38,29 @@ public class PelatisUI extends javax.swing.JFrame {
         if(pelatis.getPremium()){
             offersPanel.setVisible(true);
         }
+       //try{
+         //  BufferedReader br = new BufferedReader(new FileReader("src/addoffer.txt"));
+           //DefaultTableModel model = (DefaultTableModel)offersTable.getModel();
+           
+           //Object[] tableLines = br.lines().toArray();
+           
+           //for(int i=0; i<tableLines.length; i++)
+           //{
+             //  String line = tableLines[i].toString().trim();
+              // String[] dataRow = line.split(",");
+               
+           //}
+           //}
+           //catch (IOException e) {  
+            //e.printStackTrace();  
+        //} 
+       //}
+        
+        
+        
+        
+        
+        
     }
               
             

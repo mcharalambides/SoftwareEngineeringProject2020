@@ -134,7 +134,7 @@ public class addOffer extends javax.swing.JFrame {
             writeTable = new BufferedWriter(new FileWriter("src/addoffer.txt")); 
             String str = jTextField1.getText();
             String str2 = jTextField2.getText(); 
-            writeTable.write(str +" "+ str2);  
+            writeTable.write(str +" , "+ str2);  
             writeTable.newLine();
             writeTable.close();  
               
