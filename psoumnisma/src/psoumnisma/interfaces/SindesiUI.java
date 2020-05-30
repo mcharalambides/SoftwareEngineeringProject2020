@@ -160,7 +160,7 @@ public class SindesiUI extends javax.swing.JFrame {
             String[] stringArr = list.toArray(new String[0]);
 
             
-            String[] fields = stringArr[3].split("\\,");
+            String[] fields = stringArr[2].split("\\,");
             
             if (str2.equals(fields[2]) && str3.equals(fields[3])){
                 Pelatis pelatis1 = new Pelatis(fields[0],fields[1],fields[2],fields[3],fields[4],fields[5],Boolean.parseBoolean(fields[6]));

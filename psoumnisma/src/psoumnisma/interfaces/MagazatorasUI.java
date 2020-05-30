@@ -154,6 +154,11 @@ public class MagazatorasUI extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Log out");
+        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu4MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -295,6 +300,16 @@ public class MagazatorasUI extends javax.swing.JFrame {
         offer.setSize(900,600);
         offer.setVisible(true);
     }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
+        // TODO add your handling code here:
+        SindesiUI sindesi = new SindesiUI();
+        
+        sindesi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        sindesi.setSize(700,600);
+        sindesi.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenu4MouseClicked
 
     /**
      * @param args the command line arguments

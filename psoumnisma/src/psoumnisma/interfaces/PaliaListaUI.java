@@ -5,6 +5,8 @@
  */
 package psoumnisma.interfaces;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Pavlos
@@ -128,6 +130,11 @@ public class PaliaListaUI extends javax.swing.JFrame {
         menuBar.add(jMenu4);
 
         jMenu5.setText("Log out");
+        jMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu5MouseClicked(evt);
+            }
+        });
         menuBar.add(jMenu5);
 
         setJMenuBar(menuBar);
@@ -183,6 +190,16 @@ public class PaliaListaUI extends javax.swing.JFrame {
     private void alphabeticalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alphabeticalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_alphabeticalActionPerformed
+
+    private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
+        // TODO add your handling code here:
+        SindesiUI sindesi = new SindesiUI();
+        
+        sindesi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        sindesi.setSize(700,600);
+        sindesi.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenu5MouseClicked
 
     /**
      * @param args the command line arguments

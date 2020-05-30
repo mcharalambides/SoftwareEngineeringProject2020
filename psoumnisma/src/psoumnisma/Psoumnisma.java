@@ -27,7 +27,7 @@ public class Psoumnisma {
         SindesiUI sindesi = new SindesiUI();
         
         sindesi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        sindesi.setSize(900,600);
+        sindesi.setSize(700,600);
         sindesi.setVisible(true);
         
         //Magazatoras
