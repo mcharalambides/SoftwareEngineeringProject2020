@@ -1,2 +1,2 @@
-id , shopname , date        , cost , distance
-3  / Arapis   / 19.06.2019  / 20   / 20
+id, customer name, shopname, date, cost, distance
+0,Rafael Neofytou,Arapis,19/06/2019,20,20

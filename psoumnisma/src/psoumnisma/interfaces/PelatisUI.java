@@ -448,37 +448,39 @@ public class PelatisUI extends javax.swing.JFrame {
     }//GEN-LAST:event_action2
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
-            PaliaListaUI oldlistUI = new PaliaListaUI();
-             oldlistUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-             oldlistUI.setSize(900,600);
-             oldlistUI.setVisible(true);
+            try{       
+              BufferedReader in = new BufferedReader(new FileReader("src/palieslistes.txt"));
+              PaliaListaUI palies = new PaliaListaUI();
+              palies.setVisible(true);              
+              
+                            
+              DefaultTableModel table = new DefaultTableModel();
+              table.addColumn("id");
+              table.addColumn("Shop NAme");
+              table.addColumn("Date");
+              table.addColumn("Cost");
+              table.addColumn("Distance");
+              String row;
+              int i=0;
+              in.readLine();
+              while ((row = in.readLine())!= null) {
+              table.insertRow(i, row.split(",").clone());
+              i++;
+              //"0","Arapis","19/06/2019","20","20"
+              }
+              
+              palies.resultsTable.setModel(table);
+      
+                
+                
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+            
              
-             //try {
-            //BufferedReader br = new BufferedReader(new FileReader("src/palieslistes"));
-            // get the first line
-            // get the columns name from the first line
-            // set columns name to the jtable model
-            //String firstLine = br.readLine().trim();
-            //String[] columnsName = firstLine.split(",");
-            //DefaultTableModel model = (DefaultTableModel)oldlistUI.resultsTable.getModel();
-            //model.setColumnIdentifiers(columnsName);
-            
-            // get lines from txt file
-            //Object[] tableLines = br.lines().toArray();
-            
-            // extratct data from lines
-            // set data to jtable model
-            //for(int i = 0; i < tableLines.length; i++)
-            //{
-              //  String line = tableLines[i].toString().trim();
-                //String[] dataRow = line.split("/");
-                //model.addRow(dataRow);
-           // }
-            
-            
-        //} catch (Exception ex) {
-         //   Logger.getLogger(PelatisUI.class.getName()).log(Level.SEVERE, null, ex);
-        //}
+             
+    
              
         
         
