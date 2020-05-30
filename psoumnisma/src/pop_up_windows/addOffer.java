@@ -5,6 +5,20 @@
  */
 package pop_up_windows;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableColumn;
+
 /**
  *
  * @author rafae
@@ -55,6 +69,11 @@ public class addOffer extends javax.swing.JFrame {
         });
 
         jButton1.setText("Save");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,10 +122,29 @@ public class addOffer extends javax.swing.JFrame {
 
     private void jTextField1InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTextField1InputMethodTextChanged
         // TODO add your handling code here:
-        String str = jTextField1.getText();
-        String str2 = jTextField2.getText();
+       // String str = jTextField1.getText();
+        //String str2 = jTextField2.getText();
         
     }//GEN-LAST:event_jTextField1InputMethodTextChanged
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        BufferedWriter writeTable = null;
+ try {  
+            writeTable = new BufferedWriter(new FileWriter("src/addoffer.txt")); 
+            String str = jTextField1.getText();
+            String str2 = jTextField2.getText(); 
+            writeTable.write(str +" "+ str2);  
+            writeTable.newLine();
+            writeTable.close();  
+              
+        } catch (IOException e) {  
+            e.printStackTrace();  
+        }  
+        JOptionPane.showMessageDialog(null, "Offer Added Successfully");
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
