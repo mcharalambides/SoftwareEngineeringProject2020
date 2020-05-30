@@ -7,10 +7,11 @@ public class Pelatis {
     private String password;
     private String telephoneNumber;
     private String address;
-    private int coordinates[];
+    private int coordinates1;
+    private int coordinates2;
     private Boolean premium;
     
-    public Pelatis(String name,String surname,String email,String password,String telephoneNumber,String address,Boolean premium){
+    public Pelatis(String name,String surname,String email,String password,String telephoneNumber,String address,int coordinates1,int coordinates2,Boolean premium){
         this.name = name;
         this.surname = surname;
         this.address = address;
@@ -18,6 +19,8 @@ public class Pelatis {
         this.password = password;
         this.telephoneNumber = telephoneNumber;
         this.address = address;
+        this.coordinates1 = coordinates1;
+        this.coordinates2 = coordinates2;
         this.premium = premium;
         
         }
@@ -51,8 +54,12 @@ public class Pelatis {
         return address;
     }
 
-    public int[] getCoordinates() {
-        return coordinates;
+    public int getCoordinates1() {
+        return coordinates1;
+    }
+    
+    public int getCoordinates2() {
+        return coordinates2;
     }
     
     

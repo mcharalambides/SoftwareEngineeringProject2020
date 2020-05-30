@@ -152,29 +152,36 @@ public class SindesiUI extends javax.swing.JFrame {
 
     private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
         // TODO add your handling code here:
-        
-        String str1 = String.valueOf(combobox.getSelectedItem());
-        String str2 = email.getText();
-        String str3 = password.getText();
-        
+         
         try{       
         if (combobox.getSelectedIndex() == 0)
         {
-            BufferedReader in = new BufferedReader(new FileReader("src/xristes.txt"));
-            String str;
-
-            List<String> list = new ArrayList<String>();
-            while((str = in.readLine()) != null){
-                list.add(str);
+            BufferedReader in1 = new BufferedReader(new FileReader("src/xristes.txt"));
+            String strPel;
+            String username;
+            String password;
+            Boolean flag = false;
+            String copy[] = new String[7];
+            strPel = in1.readLine();
+            
+            while(strPel != null){
+                username = strPel.split(",")[2];
+                password = strPel.split(",")[3];
+                if(username.equals(this.email.getText()) && password.equals(this.password.getText())){
+                    copy = strPel.split(",").clone();
+                    flag = true;
+                    break;
+                }
+                strPel = in1.readLine();
             }
 
-            String[] stringArr = list.toArray(new String[0]);
+            //String[] stringArr = list.toArray(new String[0]);
 
             
-            String[] fields = stringArr[2].split("\\,");
+            //String[] fields = stringArr[2].split("\\,");
             
-            if (str2.equals(fields[2]) && str3.equals(fields[3])){
-                Pelatis pelatis1 = new Pelatis(fields[0],fields[1],fields[2],fields[3],fields[4],fields[5],Boolean.parseBoolean(fields[6]));
+            if (flag){
+                Pelatis pelatis1 = new Pelatis(copy[0],copy[1],copy[2],copy[3],copy[4],copy[5],Integer.parseInt(copy[6]),Integer.parseInt(copy[7]),Boolean.parseBoolean(copy[8]));
                 PelatisUI pelatis = new PelatisUI(pelatis1);
                 pelatis.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 pelatis.setSize(900,600);

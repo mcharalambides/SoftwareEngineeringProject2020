@@ -34,7 +34,9 @@ public class PelatisUI extends javax.swing.JFrame {
         this.address.setText(pelatis.getAddress());
         this.telephone.setText(pelatis.getTelephoneNumber());
         this.password.setText(pelatis.getPassword());
-        
+        this.c1.setText(Integer.toString(pelatis.getCoordinates1()));
+        this.c2.setText(Integer.toString(pelatis.getCoordinates2()));
+         
         if(pelatis.getPremium()){
             offersPanel.setVisible(true);
             populateOffer();
@@ -74,8 +76,8 @@ public class PelatisUI extends javax.swing.JFrame {
         editEmail = new javax.swing.JButton();
         editTelephone = new javax.swing.JButton();
         editPassword = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        c2 = new javax.swing.JLabel();
+        c1 = new javax.swing.JLabel();
         offersPanel = new java.awt.Panel();
         jScrollPane1 = new javax.swing.JScrollPane();
         offersTable = new javax.swing.JTable();
@@ -292,9 +294,9 @@ public class PelatisUI extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(c2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel7)
                             .addGap(62, 62, 62)
@@ -348,9 +350,9 @@ public class PelatisUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(c2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel6))
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(c1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
@@ -511,6 +513,8 @@ public class PelatisUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField address;
+    private javax.swing.JLabel c1;
+    private javax.swing.JLabel c2;
     private javax.swing.JButton editAddress;
     private javax.swing.JButton editEmail;
     private javax.swing.JButton editFirst;
@@ -520,7 +524,6 @@ public class PelatisUI extends javax.swing.JFrame {
     private javax.swing.JTextField email;
     private javax.swing.JTextField firstName;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -528,7 +531,6 @@ public class PelatisUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     public javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
