@@ -33,7 +33,7 @@ public class PinakasApotelesmatwn {
                 String[] data = row.split(",");
                 List<String> copy = Arrays.asList(data[6].split(" "));
                 shopItems.addAll(copy);
-                if(shopItems.containsAll(lista.getItemList())){
+                if(shopItems.containsAll(lista.getItemList()) && !lista.getItemList().isEmpty()){
                     this.storeName.add(data[0]);
                     this.storeRating.add(Integer.parseInt(data[4]));
                 }
