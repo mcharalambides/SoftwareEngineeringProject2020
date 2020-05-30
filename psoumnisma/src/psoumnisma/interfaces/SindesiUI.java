@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import models.*;
 
@@ -170,11 +171,11 @@ public class SindesiUI extends javax.swing.JFrame {
                 pelatis.setVisible(true);
             }
             else
-                JOptionPane.showMessageDialog(null,"Login Unsuccessful!");
+                JOptionPane.showMessageDialog(null,"Login Unsuccessfull!");
         }
-        /*else if (combobox.getSelectedIndex() == 1)
+        else if (combobox.getSelectedIndex() == 1)
         {
-            BufferedReader in = new BufferedReader(new FileReader("src/magazatores.txt"));
+            BufferedReader in = new BufferedReader(new FileReader("src/magazatores2.txt"));
             String str;
 
             List<String> list = new ArrayList<String>();
@@ -187,15 +188,15 @@ public class SindesiUI extends javax.swing.JFrame {
             String[] fields = stringArr[0].split("\\,");
             
             if (str2.equals(fields[0]) && str3.equals(fields[1])){
-                Magazatoras magazatoras1 = new Magazatoras(fields[0],fields[1],Integer.parseInt(fields[2]),fields[3],fields[4],fields[5],fields[6],fields[7],fields[8]);
+                Magazatoras magazatoras1 = new Magazatoras(fields[0],fields[1],Long.parseLong(fields[2]),fields[3],Integer.parseInt(fields[4]),Integer.parseInt(fields[5]),Float.parseFloat(fields[6]),Arrays.asList(fields[7]));
                 MagazatorasUI magazatoras = new MagazatorasUI(magazatoras1);
                 magazatoras.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 magazatoras.setSize(900,600);
                 magazatoras.setVisible(true);
             }
             else
-                JOptionPane.showMessageDialog(null,"Login Unsuccessful!");
-        }*/
+                JOptionPane.showMessageDialog(null,"Login Unsuccessfull!");
+        }
         
         }
         catch(Exception e){

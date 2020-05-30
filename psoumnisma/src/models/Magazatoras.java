@@ -6,24 +6,26 @@ import java.util.List;
 public class Magazatoras {
     private String name;
     private String password;
-    private int telephoneNumber;
+    private long telephoneNumber;
     private String address;
-    private int[] coordinates;
-    private File image;
-    private int rating;
-    private List<Paraggelia> orderList;
+    private int coordinates1;
+    private int coordinates2;
+    //private File image;
+    private float rating;
+    //private List<Paraggelia> orderList;
     private List<Proion> productList;
 
     
-    public Magazatoras(String name,String password,int telephoneNumber,String address,int[] coordinates,File image,int rating,List orderList,List productList){
+    public Magazatoras(String name,String password,long telephoneNumber,String address,int coordinates1,int coordinates2,float rating,List productList){
         this.name = name;
         this.password = password;
         this.telephoneNumber = telephoneNumber;
         this.address = address;
-        this.coordinates = coordinates;
-        this.image = image;
+        this.coordinates1 = coordinates1;
+        this.coordinates2 = coordinates2;
+        //this.image = image;
         this.rating = rating;
-        this.orderList = orderList;
+        //this.orderList = orderList;
         this.productList = productList;  
     }
     
@@ -35,7 +37,7 @@ public class Magazatoras {
         return password;
     }
 
-    public int getTelephoneNumber() {
+    public long getTelephoneNumber() {
         return telephoneNumber;
     }
 
@@ -43,21 +45,25 @@ public class Magazatoras {
         return address;
     }
 
-    public int[] getCoordinates() {
-        return coordinates;
+    public int getCoordinates1() {
+        return coordinates1;
     }
 
-    public File getImage() {
+    public int getCoordinates2() {
+        return coordinates2;
+    }
+    
+    /*public File getImage() {
         return image;
-    }
+    }*/
 
-    public int getRating() {
+    public float getRating() {
         return rating;
     }
 
-    public List<Paraggelia> getOrderList() {
+    /*public List<Paraggelia> getOrderList() {
         return orderList;
-    }
+    }*/
 
     public List<Proion> getProductList() {
         return productList;
