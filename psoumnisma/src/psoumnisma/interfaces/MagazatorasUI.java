@@ -5,8 +5,11 @@
  */
 package psoumnisma.interfaces;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.Arrays;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 import pop_up_windows.addOffer;
 import models.*;
 import pop_up_windows.view;
@@ -29,6 +32,8 @@ public class MagazatorasUI extends javax.swing.JFrame {
         this.password.setText(magazatoras.getPassword());
         this.telephone.setText(Long.toString(magazatoras.getTelephoneNumber()));
         this.rating.setText(Float.toString(magazatoras.getRating()));
+        
+       getParaggeleia();
     }
 
     /**
@@ -365,7 +370,35 @@ public class MagazatorasUI extends javax.swing.JFrame {
         vw.setVisible(true);
        
     }//GEN-LAST:event_jButton6MouseClicked
+    private void getParaggeleia() {
+        try{       
+              BufferedReader in = new BufferedReader(new FileReader("src/aitisi.txt"));
+                                    
+              DefaultTableModel table = new DefaultTableModel();
+              table.addColumn("Full Name");
+              table.addColumn("Address");
+              table.addColumn("Telephone");
+              table.addColumn("List");
+         
+              String row;
+              int i=0;
+              while ((row = in.readLine())!= null) {
+              table.insertRow(i, row.split(",").clone());
+              i++;
+       
+              }
+              
+              this.jTable1.setModel(table);
+      
+                
+                
+        }
+        
+        catch(Exception e){
+            e.printStackTrace();
+        }
 
+    }
     /**
      * @param args the command line arguments
      */
