@@ -2,3 +2,4 @@ Marios,Charalambides,mcharalampidis@ceid.upatras.gr,1234,6941523843,Mourouzi 25,
 Pavlos,Kwnstantinou,pavlkwn@ceid.upatras.gr,5678,6942569831,Gkotsi 28,6,7,false
 Rafael,Neofytou,rafaneof@ceid.upatras.gr,4786,6947858311,Giannitswn 15,0,14,true
 Christos,Costa,chkosta@ceid.upatras.gr,9933,6957849000,Favierou 23,9,36,true
+1,1,1,1,1,1,1,1,true
