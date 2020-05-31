@@ -44,7 +44,7 @@ public class Magazatoras {
             if(row.split(",")[0].equals(this.name)){
                 array = row.split(",").clone();
                 this.productList.add(new Proion(array[1],array[3],Integer.parseInt(array[2]),Double.parseDouble(array[4])));
-                        }
+            }
         }
         }
         catch(Exception e){

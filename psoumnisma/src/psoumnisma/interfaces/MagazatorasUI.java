@@ -358,7 +358,6 @@ public class MagazatorasUI extends javax.swing.JFrame {
         addproduct.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addproduct.setSize(700,600);
         addproduct.setVisible(true);
-        this.setVisible(false);
     }//GEN-LAST:event_jMenu3MouseClicked
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
