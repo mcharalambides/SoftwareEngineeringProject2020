@@ -23,6 +23,9 @@ public class MagazatorasUI extends javax.swing.JFrame {
     /**
      * Creates new form MagazatorasUI
      */
+    
+    private Magazatoras magazatoras;
+    
     public MagazatorasUI(Magazatoras magazatoras) {
         initComponents();
         this.shopName.setText(magazatoras.getName());
@@ -32,6 +35,7 @@ public class MagazatorasUI extends javax.swing.JFrame {
         this.password.setText(magazatoras.getPassword());
         this.telephone.setText(Long.toString(magazatoras.getTelephoneNumber()));
         this.rating.setText(Float.toString(magazatoras.getRating()));
+        this.magazatoras = magazatoras;
         
        getParaggeleia();
     }
@@ -349,7 +353,7 @@ public class MagazatorasUI extends javax.swing.JFrame {
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
         // TODO add your handling code here:
-        AddProductUI addproduct = new AddProductUI();
+        AddProductUI addproduct = new AddProductUI(magazatoras.getProductList());
         
         addproduct.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addproduct.setSize(700,600);
