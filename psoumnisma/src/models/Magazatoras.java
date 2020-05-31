@@ -1,6 +1,8 @@
 
 package models;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.util.List;
 
 public class Magazatoras {
@@ -16,7 +18,7 @@ public class Magazatoras {
     private List<Proion> productList;
 
     
-    public Magazatoras(String name,String password,long telephoneNumber,String address,int coordinates1,int coordinates2,float rating,List productList){
+    public Magazatoras(String name,String password,long telephoneNumber,String address,int coordinates1,int coordinates2,float rating){
         this.name = name;
         this.password = password;
         this.telephoneNumber = telephoneNumber;
@@ -26,8 +28,28 @@ public class Magazatoras {
         //this.image = image;
         this.rating = rating;
         //this.orderList = orderList;
-        this.productList = productList;  
+        populateProducList();
+        
     }
+    
+    public void populateProducList(){
+        try{
+        BufferedReader in2 = new BufferedReader(new FileReader("src/proionta_magaziwn.txt"));
+        String row;
+        String array[];
+        
+        while((row = in2.readLine()) != null){
+            if(row.split(",")[0].equals(this.name)){
+                array = row.split(",").clone();
+                this.productList.add(new Proion(array[1],array[3],Integer.parseInt(array[2]),Double.parseDouble(array[4])));
+                        }
+        }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
     
     public String getName() {
         return name;

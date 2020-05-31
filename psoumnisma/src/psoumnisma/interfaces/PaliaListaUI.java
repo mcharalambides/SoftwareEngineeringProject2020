@@ -69,15 +69,15 @@ public class PaliaListaUI extends javax.swing.JFrame {
             }
         });
 
+        resultsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
         jScrollPane2.setViewportView(resultsTable);
-        if (resultsTable.getColumnModel().getColumnCount() > 0) {
-            resultsTable.getColumnModel().getColumn(0).setHeaderValue("ID");
-            resultsTable.getColumnModel().getColumn(1).setHeaderValue("Shop Name");
-            resultsTable.getColumnModel().getColumn(2).setHeaderValue("Date");
-            resultsTable.getColumnModel().getColumn(3).setHeaderValue("Cost");
-            resultsTable.getColumnModel().getColumn(4).setHeaderValue("Distance(km)");
-            resultsTable.getColumnModel().getColumn(5).setHeaderValue("");
-        }
 
         jMenu1.setText("Home");
         menuBar.add(jMenu1);

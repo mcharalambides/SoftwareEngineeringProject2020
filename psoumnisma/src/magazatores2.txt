@@ -1,5 +1,5 @@
-Sklavenitis,12314,6985412563,28 oktomvriou,4,25,9,src/proionta_magaziwn/Sklavenitis.txt
-Papantoniou,1486,6985471425,Papandreou 23,6,15,4,src/proionta_magaziwn/Papantoniou.txt
-Georgiou,1481,6985472425,Andreou 29,8,15,7,src/proionta_magaziwn/Georgiou.txt
-AB,1485,6923471425,Papandreou 23,9,15,4,src/proionta_magaziwn/AB.txt
-Αραπης,1482,6985471225,Papaflesa 11,5,15,6,src/proionta_magaziwn/Αραπης.txt
+Sklavenitis,12314,6985412563,28 oktomvriou,4,25,9
+Papantoniou,1486,6985471425,Papandreou 23,6,15,4
+Georgiou,1481,6985472425,Andreou 29,8,15,7
+AB,1485,6923471425,Papandreou 23,9,15,4
+Αραπης,1482,6985471225,Papaflesa 11,5,15,6

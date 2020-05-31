@@ -216,7 +216,7 @@ public class SindesiUI extends javax.swing.JFrame {
             //String[] fields = stringArr[0].split(",");
             
             if (flag){
-                Magazatoras magazatoras1 = new Magazatoras(copy[0],copy[1],Long.parseLong(copy[2]),copy[3],Integer.parseInt(copy[4]),Integer.parseInt(copy[5]),Float.parseFloat(copy[6]),Arrays.asList(copy[7]));
+                Magazatoras magazatoras1 = new Magazatoras(copy[0],copy[1],Long.parseLong(copy[2]),copy[3],Integer.parseInt(copy[4]),Integer.parseInt(copy[5]),Float.parseFloat(copy[6]));
                 MagazatorasUI magazatoras = new MagazatorasUI(magazatoras1);
                 magazatoras.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 magazatoras.setSize(900,600);
