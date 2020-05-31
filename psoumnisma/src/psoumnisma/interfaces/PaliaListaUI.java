@@ -156,7 +156,7 @@ public class PaliaListaUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int row = this.resultsTable.getSelectedRow();
-        RATE rate = new RATE(resultsTable.getValueAt(row,0).toString());
+        RATE rate = new RATE(resultsTable.getValueAt(row,0).toString(), resultsTable.getValueAt(row, 1).toString());
         rate.setVisible(true);
         rate.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         

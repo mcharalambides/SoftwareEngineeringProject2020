@@ -4,19 +4,29 @@
  * and open the template in the editor.
  */
 package pop_up_windows;
+import models.Aksiologisi;
+import javax.swing.JOptionPane;
+import java.io.*;
+import java.io.FileNotFoundException;
+
 
 /**
  *
  * @author Pavlos
  */
 public class RATE extends javax.swing.JFrame {
+    
+    String id;
+    String name;
 
     /**
      * Creates new form RATE
      */
-    public RATE(String id) {
+    public RATE(String id,String name) {
         initComponents();
         this.jLabel3.setText("You are rating old list id=" + id);
+        this.id = id;
+        this.name = name;
     }
 
     /**
@@ -111,7 +121,53 @@ public class RATE extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+                
+        int rating = Integer.parseInt(this.jTextField2.getText());
+        String strInfo;
+        int avgRate=0;
+        int numberReview=0;
+        String newLine[];
+        String finalLine;
+        
+        if(rating<0 || rating>10)
+            JOptionPane.showMessageDialog(null, "Rating was out of bounds");
+                  
+               
+                                        
+           if(rating>=0 && rating<=10) { 
+            JOptionPane.showMessageDialog(null, "Rating was successful");
+            Aksiologisi newrate = new Aksiologisi();
+            
+                try {
+                    BufferedReader grammi = new BufferedReader(new FileReader("src/magazatores2.txt"));
+                    
+                    while((strInfo = grammi.readLine()) != null)
+                        if(name.equals(strInfo.split(",")[0])){
+                            avgRate = Integer.parseInt(strInfo.split(",")[6]);
+                            numberReview = Integer.parseInt(strInfo.split(",")[7]);
+                            break;
+                        }
+                                     
+                        
+                   avgRate = ((avgRate * numberReview) + rating) / (numberReview+1);
+                   numberReview++;
+                   newLine = strInfo.split(",");
+                   newLine[6] = String.valueOf(avgRate);
+                   newLine[7] = String.valueOf(numberReview);
+                   finalLine = String.join(",", newLine);
+                                     
+                    
+                  BufferedWriter writeTable = new BufferedWriter(new FileWriter("src/magazatores2.txt",true));
+                  writeTable.newLine();
+                  writeTable.write(finalLine);
+                  
+                  writeTable.close();
+    
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+                }
+                      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

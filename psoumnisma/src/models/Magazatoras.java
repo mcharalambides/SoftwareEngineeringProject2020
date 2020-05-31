@@ -16,9 +16,10 @@ public class Magazatoras {
     private float rating;
     //private List<Paraggelia> orderList;
     private List<Proion> productList;
+    private int numberOfReviews;
 
     
-    public Magazatoras(String name,String password,long telephoneNumber,String address,int coordinates1,int coordinates2,float rating){
+    public Magazatoras(String name,String password,long telephoneNumber,String address,int coordinates1,int coordinates2,float rating, int numberOfReviews){
         this.name = name;
         this.password = password;
         this.telephoneNumber = telephoneNumber;
@@ -27,6 +28,7 @@ public class Magazatoras {
         this.coordinates2 = coordinates2;
         //this.image = image;
         this.rating = rating;
+        this.numberOfReviews = numberOfReviews;
         //this.orderList = orderList;
         populateProducList();
         
