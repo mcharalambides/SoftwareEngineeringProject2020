@@ -5,6 +5,11 @@
  */
 package pop_up_windows;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author rafae
@@ -16,6 +21,7 @@ public class view extends javax.swing.JFrame {
      */
     public view() {
         initComponents();
+       // viewList();
     }
 
     /**
@@ -37,8 +43,18 @@ public class view extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Accept");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         jButton2.setText("Decline");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -77,7 +93,7 @@ public class view extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(1, 1, 1)
                         .addComponent(textArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
@@ -98,11 +114,23 @@ public class view extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Order Accepted");
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Order Declined");
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -137,6 +165,34 @@ public class view extends javax.swing.JFrame {
                 new view().setVisible(true);
             }
         });
+    }
+    private void viewList(){
+        try{       
+        
+            BufferedReader in1 = new BufferedReader(new FileReader("src/aitisi.txt"));
+            String strDet;
+            String strPro;
+            
+            strDet = in1.readLine();
+            DefaultTableModel table1 = new DefaultTableModel();
+            while(strDet != null){
+                strPro = strDet.split(",")[3];
+            
+              int i=0;
+              while ((strPro = in1.readLine())!= null) {
+              table1.insertRow(i, strPro.split("=").clone());
+              i++;
+       
+              }
+              
+              this.jTable1.setModel(table1);
+             
+               
+            }
+    }
+         catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
