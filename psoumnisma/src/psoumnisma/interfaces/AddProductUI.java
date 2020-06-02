@@ -8,6 +8,7 @@ package psoumnisma.interfaces;
 import javax.swing.JFrame;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import models.Proion;
 
 /**
  *
@@ -18,12 +19,12 @@ public class AddProductUI extends javax.swing.JFrame {
     /**
      * Creates new form AddProductUI
      */
-    public AddProductUI(List productList) {
+    public AddProductUI(List<Proion> productList) {
         initComponents();
         test(productList);
     }
     
-    public void test(List productList){
+    public void test(List<Proion> productList){
         
         DefaultTableModel table = new DefaultTableModel();
         table.addColumn("Product name");
@@ -31,15 +32,13 @@ public class AddProductUI extends javax.swing.JFrame {
         table.addColumn("Description");
 
         String row;
-        int i=0;
+        int rows = productList.size();
         
-        /*while () {
-        table.insertRow(i, row.split(",").clone());
-        i++;
-        //"0","Arapis","19/06/2019","20","20"
+        for (int i=0; i<rows; i++) {
+            table.insertRow(i, new String[]{productList.get(i).getName(), String.valueOf(productList.get(i).getQuantity()), productList.get(i).getDescription()});
         }
               
-        addproduct.productsTable.setModel(table);*/
+        productsTable.setModel(table);
     }
 
     /**
@@ -69,6 +68,11 @@ public class AddProductUI extends javax.swing.JFrame {
 
         remove.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         remove.setText("-");
+        remove.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                removeMouseClicked(evt);
+            }
+        });
 
         productsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -82,6 +86,11 @@ public class AddProductUI extends javax.swing.JFrame {
 
         add.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         add.setText("+");
+        add.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addMouseClicked(evt);
+            }
+        });
 
         jMenu1.setText("Home");
         jMenuBar1.add(jMenu1);
@@ -147,6 +156,18 @@ public class AddProductUI extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jMenu4MouseClicked
 
+    private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_addMouseClicked
+
+    private void removeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeMouseClicked
+        // TODO add your handling code here:
+        JTable table = new JTable(table);
+        int row = this.productsTable.getSelectedRow();
+        this.productsTable.removeRow(row);
+    }//GEN-LAST:event_removeMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -160,7 +181,7 @@ public class AddProductUI extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable productsTable;
+    public javax.swing.JTable productsTable;
     private javax.swing.JButton remove;
     // End of variables declaration//GEN-END:variables
 }

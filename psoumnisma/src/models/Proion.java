@@ -21,4 +21,22 @@ public class Proion {
         this.description = description;
         this.price = price;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+    
+    
 }

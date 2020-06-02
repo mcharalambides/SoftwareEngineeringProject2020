@@ -3,7 +3,7 @@ package models;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.util.List;
+import java.util.*;
 
 public class Magazatoras {
     private String name;
@@ -29,6 +29,7 @@ public class Magazatoras {
         //this.image = image;
         this.rating = rating;
         this.numberOfReviews = numberOfReviews;
+        this.productList = new ArrayList<Proion>();
         //this.orderList = orderList;
         populateProducList();
         
@@ -46,6 +47,10 @@ public class Magazatoras {
                 this.productList.add(new Proion(array[1],array[3],Integer.parseInt(array[2]),Double.parseDouble(array[4])));
             }
         }
+        
+        for(int i=0;i<productList.size();i++){
+            System.out.println(productList.get(i).getName());
+        } 
         }
         catch(Exception e){
             e.printStackTrace();
