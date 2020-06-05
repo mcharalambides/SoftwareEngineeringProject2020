@@ -123,50 +123,63 @@ public class RATE extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
                 
         int rating = Integer.parseInt(this.jTextField2.getText());
-        String strInfo;
+        String strInfo = null;
+        String temp = null;
         int avgRate=0;
         int numberReview=0;
         String newLine[];
         String finalLine;
+        String fullText = "";
+        try{
+        BufferedReader grammi = new BufferedReader(new FileReader("src/magazatores2.txt"));
+        grammi.mark(10000);
         
+        //Periptwsi pou exei dwsei lathos rating
         if(rating<0 || rating>10)
             JOptionPane.showMessageDialog(null, "Rating was out of bounds");
-                  
-               
-                                        
-           if(rating>=0 && rating<=10) { 
-            JOptionPane.showMessageDialog(null, "Rating was successful");
+                                                   
+         if(rating>=0 && rating<=10) { 
             Aksiologisi newrate = new Aksiologisi();
             
-                try {
-                    BufferedReader grammi = new BufferedReader(new FileReader("src/magazatores2.txt"));
-                    
-                    while((strInfo = grammi.readLine()) != null)
-                        if(name.equals(strInfo.split(",")[0])){
-                            avgRate = Integer.parseInt(strInfo.split(",")[6]);
-                            numberReview = Integer.parseInt(strInfo.split(",")[7]);
-                            break;
-                        }
+            //Diavazw tin vathmologia tou magaziou kai ton arithmo apo reviews
+             while((strInfo = grammi.readLine()) != null){
+                if(name.equals(strInfo.split(",")[0])){
+                    avgRate = Integer.parseInt(strInfo.split(",")[6]);
+                    numberReview = Integer.parseInt(strInfo.split(",")[7]);
+                    temp = strInfo;
+                 }
+                fullText = fullText.concat(strInfo);
+                fullText = fullText.concat("\r\n");
+             }
+           
                                      
-                        
+                   //Ypologismos neas vathmologias     
                    avgRate = ((avgRate * numberReview) + rating) / (numberReview+1);
                    numberReview++;
-                   newLine = strInfo.split(",");
+                   newLine = temp.split(",");
                    newLine[6] = String.valueOf(avgRate);
                    newLine[7] = String.valueOf(numberReview);
                    finalLine = String.join(",", newLine);
                                      
                     
-                  BufferedWriter writeTable = new BufferedWriter(new FileWriter("src/magazatores2.txt",true));
-                  writeTable.newLine();
-                  writeTable.write(finalLine);
+                  BufferedWriter writeTable = new BufferedWriter(new FileWriter("src/magazatores2.txt",false));
+                  grammi.reset();
+                    
+                  //Antikathistw to magazi tin nea grammi
+                  fullText = fullText.replace(temp, finalLine);
+                  
+                  //Grafw to neo keimeno magaziwn
+                  writeTable.write(fullText);
                   
                   writeTable.close();
+                  JOptionPane.showMessageDialog(null, "Rating was successful");
+         }
     
                 } catch (Exception ex) {
                     ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Rating was not successful");
                 }
-                }
+                
                       
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -181,6 +194,6 @@ public class RATE extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    public javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

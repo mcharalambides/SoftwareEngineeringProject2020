@@ -7,6 +7,7 @@ package psoumnisma.interfaces;
 
 import javax.swing.JFrame;
 import java.util.List;
+import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import models.Proion;
 
@@ -68,9 +69,9 @@ public class AddProductUI extends javax.swing.JFrame {
 
         remove.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         remove.setText("-");
-        remove.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                removeMouseClicked(evt);
+        remove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeActionPerformed(evt);
             }
         });
 
@@ -86,9 +87,9 @@ public class AddProductUI extends javax.swing.JFrame {
 
         add.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         add.setText("+");
-        add.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addMouseClicked(evt);
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
             }
         });
 
@@ -156,17 +157,16 @@ public class AddProductUI extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jMenu4MouseClicked
 
-    private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_addMouseClicked
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
 
-    private void removeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeMouseClicked
-        // TODO add your handling code here:
-        JTable table = new JTable(table);
-        int row = this.productsTable.getSelectedRow();
-        this.productsTable.removeRow(row);
-    }//GEN-LAST:event_removeMouseClicked
+        DefaultTableModel model = (DefaultTableModel)this.productsTable.getModel();
+        model.addRow(new Vector<>());
+    }//GEN-LAST:event_addActionPerformed
+
+    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
+        DefaultTableModel model = (DefaultTableModel)this.productsTable.getModel();
+        model.removeRow(this.productsTable.getSelectedRow());
+    }//GEN-LAST:event_removeActionPerformed
 
     /**
      * @param args the command line arguments

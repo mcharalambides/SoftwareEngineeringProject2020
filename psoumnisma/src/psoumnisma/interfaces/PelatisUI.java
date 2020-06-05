@@ -407,18 +407,16 @@ public class PelatisUI extends javax.swing.JFrame {
 
     private void action2(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_action2
         ListaUI listUI = new ListaUI();
-        listUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         listUI.setSize(900,600);
         listUI.setVisible(true);
         listUI.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         try{
-        BufferedReader csvReader = new BufferedReader(new FileReader("src/magazatores.txt"));
+        BufferedReader csvReader = new BufferedReader(new FileReader("src/proionta_magaziwn.txt"));
         String row;
         Set<String> shopItems = new HashSet<String>();
          while ((row = csvReader.readLine())!= null) {
-             String[] data = row.split(",");
-             shopItems.addAll(Arrays.asList(data[6].split(" "))); 
+             shopItems.add(row.split(",")[1]); 
          }
 
         JComboBox combobox = new JComboBox(shopItems.toArray());
@@ -467,13 +465,8 @@ public class PelatisUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu3MouseClicked
 
     private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
-        // TODO add your handling code here:
-        SindesiUI sindesi = new SindesiUI();
-        
-        sindesi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        sindesi.setSize(700,600);
-        sindesi.setVisible(true);
-        this.setVisible(false);
+
+        this.dispose();
     }//GEN-LAST:event_jMenu5MouseClicked
 
    

@@ -356,7 +356,7 @@ public class MagazatorasUI extends javax.swing.JFrame {
         AddProductUI addproduct = new AddProductUI(magazatoras.getProductList());
         
         addproduct.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        addproduct.setSize(700,600);
+        addproduct.setSize(1000, 600);
         addproduct.setVisible(true);
     }//GEN-LAST:event_jMenu3MouseClicked
 

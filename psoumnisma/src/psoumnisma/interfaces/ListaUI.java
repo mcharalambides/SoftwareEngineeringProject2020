@@ -9,6 +9,7 @@ import models.PinakasApotelesmatwn;
 import java.util.List;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -211,6 +212,8 @@ public class ListaUI extends javax.swing.JFrame {
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
         List<String> list = new ArrayList<String>();
         
+        DefaultTableModel table = new DefaultTableModel();
+        
         for(int i=0; i<jTable1.getRowCount(); i++){
             if(jTable1.getValueAt(i,0) != null)
             list.add(jTable1.getValueAt(i,0).toString());
@@ -221,6 +224,9 @@ public class ListaUI extends javax.swing.JFrame {
         PinakasApotelesmatwn pinakas = new PinakasApotelesmatwn(lista);
         ResultsScreenUI results = new ResultsScreenUI(pinakas);
         results.setVisible(true);
+        results.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+        
     }//GEN-LAST:event_submitActionPerformed
 
     private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
@@ -230,7 +236,7 @@ public class ListaUI extends javax.swing.JFrame {
         sindesi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         sindesi.setSize(700,600);
         sindesi.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jMenu5MouseClicked
 
     /**

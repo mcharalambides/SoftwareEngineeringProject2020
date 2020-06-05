@@ -141,10 +141,10 @@
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="5" rowCount="10">
                 <Column editable="true" title="Shop Image" type="java.lang.Object"/>
-                <Column editable="true" title="Shop Name" type="java.lang.String"/>
-                <Column editable="true" title="List Cost (euro)" type="java.lang.Double"/>
-                <Column editable="true" title="Distance" type="java.lang.Double"/>
-                <Column editable="true" title="Rating" type="java.lang.String"/>
+                <Column editable="true" title="Shop Name" type="java.lang.Object"/>
+                <Column editable="true" title="List Cost (euro)" type="java.lang.Object"/>
+                <Column editable="true" title="Distance" type="java.lang.Object"/>
+                <Column editable="true" title="Rating" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

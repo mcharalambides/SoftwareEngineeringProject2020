@@ -183,7 +183,7 @@ public class SindesiUI extends javax.swing.JFrame {
             if (flag){
                 Pelatis pelatis1 = new Pelatis(copy[0],copy[1],copy[2],copy[3],copy[4],copy[5],Integer.parseInt(copy[6]),Integer.parseInt(copy[7]),Boolean.parseBoolean(copy[8]));
                 PelatisUI pelatis = new PelatisUI(pelatis1);
-                pelatis.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                pelatis.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 pelatis.setSize(900,600);
                 pelatis.setVisible(true);
             }
@@ -218,7 +218,7 @@ public class SindesiUI extends javax.swing.JFrame {
             if (flag){
                 Magazatoras magazatoras1 = new Magazatoras(copy[0],copy[1],Long.parseLong(copy[2]),copy[3],Integer.parseInt(copy[4]),Integer.parseInt(copy[5]),Float.parseFloat(copy[6]),Integer.parseInt(copy[7]));
                 MagazatorasUI magazatoras = new MagazatorasUI(magazatoras1);
-                magazatoras.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                magazatoras.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 magazatoras.setSize(900,600);
                 magazatoras.setVisible(true);
             }
