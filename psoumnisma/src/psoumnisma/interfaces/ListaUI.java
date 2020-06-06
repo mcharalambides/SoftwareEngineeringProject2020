@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package psoumnisma.interfaces;
+import java.awt.Window;
 import models.Lista;
 import models.PinakasApotelesmatwn;
 import java.util.List;
@@ -230,13 +231,14 @@ public class ListaUI extends javax.swing.JFrame {
     }//GEN-LAST:event_submitActionPerformed
 
     private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
-        // TODO add your handling code here:
+        System.gc();
+        for(Window window : Window.getWindows()) 
+            window.dispose();
         SindesiUI sindesi = new SindesiUI();
         
         sindesi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         sindesi.setSize(700,600);
         sindesi.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_jMenu5MouseClicked
 
     /**

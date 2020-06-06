@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package psoumnisma.interfaces;
-import  pop_up_windows.RATE;
+import java.awt.Window;
+import  pop_up_windows.*;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,6 +38,8 @@ public class PaliaListaUI extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         resultsTable = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -79,6 +83,17 @@ public class PaliaListaUI extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(resultsTable);
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton2.setText("PDF");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton3.setText("EDIT");
+
         jMenu1.setText("Home");
         menuBar.add(jMenu1);
 
@@ -119,7 +134,10 @@ public class PaliaListaUI extends javax.swing.JFrame {
                         .addGap(51, 51, 51)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 724, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -132,7 +150,12 @@ public class PaliaListaUI extends javax.swing.JFrame {
                     .addComponent(cost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(302, Short.MAX_VALUE))
         );
@@ -145,22 +168,35 @@ public class PaliaListaUI extends javax.swing.JFrame {
     }//GEN-LAST:event_alphabeticalActionPerformed
 
     private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
-        // TODO add your handling code here:
+        System.gc();
+        for(Window window : Window.getWindows()) 
+            window.dispose();
         SindesiUI sindesi = new SindesiUI();
         
         sindesi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         sindesi.setSize(700,600);
         sindesi.setVisible(true);
-        this.setVisible(false);
     }//GEN-LAST:event_jMenu5MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int row = this.resultsTable.getSelectedRow();
+        if(row == -1)
+            JOptionPane.showMessageDialog(null, "Select a Row");
+        else{
         RATE rate = new RATE(resultsTable.getValueAt(row,0).toString(), resultsTable.getValueAt(row, 1).toString());
         rate.setVisible(true);
         rate.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int row = this.resultsTable.getSelectedRow();
+        pdfWindow pdf = new pdfWindow(this.resultsTable);
+        pdf.setVisible(true);
+        pdf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,6 +208,8 @@ public class PaliaListaUI extends javax.swing.JFrame {
     private javax.swing.JButton cost;
     private javax.swing.JButton distance;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

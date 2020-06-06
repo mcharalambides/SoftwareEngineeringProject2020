@@ -5,6 +5,7 @@
  */
 
 package psoumnisma.interfaces;
+import java.awt.Window;
 import javax.swing.JFrame;
 import javax.swing.table.TableColumn;
 import javax.swing.*;
@@ -465,8 +466,14 @@ public class PelatisUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu3MouseClicked
 
     private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
-
-        this.dispose();
+        System.gc();
+        for(Window window : Window.getWindows()) 
+            window.dispose();
+        SindesiUI sindesi = new SindesiUI();
+        
+        sindesi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        sindesi.setSize(700,600);
+        sindesi.setVisible(true);
     }//GEN-LAST:event_jMenu5MouseClicked
 
    

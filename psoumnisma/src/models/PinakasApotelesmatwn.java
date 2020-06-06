@@ -5,11 +5,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.lang.Exception;
 import java.util.*;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 public class PinakasApotelesmatwn {
     private List<String> storeName;
-    private File storeImage;
+    private List<ImageIcon> storeImage;
     private List<Double> cost;
     private List<Double> distance;
     private List<Integer> storeRating;
@@ -19,10 +20,12 @@ public class PinakasApotelesmatwn {
         cost = new ArrayList<Double>();
         distance = new ArrayList<Double>();
         storeRating = new ArrayList<Integer>();
+        storeImage = new ArrayList<ImageIcon>();
         
         if(lista.getItemList().size()>0){
             checkMagazatores(lista);
             setRating();
+            setStoreImage();
         }
         
     }
@@ -58,10 +61,9 @@ public class PinakasApotelesmatwn {
                     shopItems.add(row.split(",")[1]);
             
             csvReader.reset();
-            if(shopItems.containsAll(lista.getItemList()) ){
+            if(shopItems.containsAll(lista.getItemList()) )
                this.storeName.add(shopNames.get(i));
-               //while(j<lista.getItemList().size())            
-            }
+            
             shopItems.clear();
             i++;   
         }
@@ -72,12 +74,9 @@ public class PinakasApotelesmatwn {
         //Ypologismos kostous lista gia kathe magazi
         while(i<this.storeName.size()){
             while ((row = csvReader.readLine())!= null)
-                if(row.split(",")[0].equals(this.storeName.get(i)) && lista.getItemList().contains(row.split(",")[1])){
-                    cost = cost + Double.parseDouble(row.split(",")[4]);
-                    //j++;
-                }
+                if(row.split(",")[0].equals(this.storeName.get(i)) && lista.getItemList().contains(row.split(",")[1]))
+                    cost = cost + Double.parseDouble(row.split(",")[4]);       
             
-            //j=0;
             this.cost.add(cost);
             csvReader.reset();
             cost=0;
@@ -95,9 +94,13 @@ public class PinakasApotelesmatwn {
     public String getStoreName(int i) {
         return storeName.get(i);
     }
+    
+    public void setStoreImage(){
+        storeImage.add(new ImageIcon("src/images/download.jpg"));
+    }
 
-    public File getStoreImage() {
-        return storeImage;
+    public ImageIcon getStoreImage(int i) {
+        return storeImage.get(i);
     }
 
     public double getCost(Integer i) {

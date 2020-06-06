@@ -5,6 +5,7 @@
  */
 package psoumnisma.interfaces;
 
+import java.awt.Window;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Arrays;
@@ -342,13 +343,14 @@ public class MagazatorasUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
-        // TODO add your handling code here:
+        System.gc();
+        for(Window window : Window.getWindows()) 
+            window.dispose();
         SindesiUI sindesi = new SindesiUI();
         
         sindesi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         sindesi.setSize(700,600);
         sindesi.setVisible(true);
-        this.setVisible(false);
     }//GEN-LAST:event_jMenu4MouseClicked
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked

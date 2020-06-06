@@ -5,6 +5,7 @@
  */
 package psoumnisma.interfaces;
 
+import java.awt.Window;
 import javax.swing.JFrame;
 import java.util.List;
 import java.util.Vector;
@@ -148,13 +149,14 @@ public class AddProductUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
-        // TODO add your handling code here:
+        System.gc();
+        for(Window window : Window.getWindows()) 
+            window.dispose();
         SindesiUI sindesi = new SindesiUI();
         
         sindesi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         sindesi.setSize(700,600);
         sindesi.setVisible(true);
-        this.setVisible(false);
     }//GEN-LAST:event_jMenu4MouseClicked
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed

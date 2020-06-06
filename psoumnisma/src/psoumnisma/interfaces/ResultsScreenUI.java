@@ -1,16 +1,20 @@
 
 package psoumnisma.interfaces;
+import java.awt.Window;
 import javax.swing.JFrame;
 import models.PinakasApotelesmatwn;
+import pop_up_windows.paraggeliaWindow;
 
 /**
  *
  * @author Christos
  */
 public class ResultsScreenUI extends javax.swing.JFrame {
+    private PinakasApotelesmatwn pinakas;
 
     public ResultsScreenUI(PinakasApotelesmatwn pinakas) {
         initComponents();
+        this.pinakas = pinakas;
         for(int i=0; i<pinakas.getSizeOfPinaka(); i++){
             this.resultsTable.setValueAt(pinakas.getStoreName(i),i,1);
             this.resultsTable.setValueAt(String.valueOf(pinakas.getCost(i)),i,2);
@@ -33,6 +37,7 @@ public class ResultsScreenUI extends javax.swing.JFrame {
         distance = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         resultsTable = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -78,6 +83,13 @@ public class ResultsScreenUI extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(resultsTable);
 
+        jButton1.setText("DELIVERY");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         jMenu1.setText("Home");
         menuBar.add(jMenu1);
 
@@ -105,19 +117,22 @@ public class ResultsScreenUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addComponent(alphabetical)
-                .addGap(18, 18, 18)
-                .addComponent(cost, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(distance, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(rating, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(151, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(alphabetical)
+                        .addGap(18, 18, 18)
+                        .addComponent(cost, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(distance, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(rating, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 825, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(jButton1)))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,8 +143,13 @@ public class ResultsScreenUI extends javax.swing.JFrame {
                     .addComponent(distance)
                     .addComponent(cost)
                     .addComponent(rating))
-                .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(jButton1)))
                 .addContainerGap(231, Short.MAX_VALUE))
         );
 
@@ -141,14 +161,22 @@ public class ResultsScreenUI extends javax.swing.JFrame {
     }//GEN-LAST:event_alphabeticalActionPerformed
 
     private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
-        // TODO add your handling code here:
+        System.gc();
+        for(Window window : Window.getWindows()) 
+            window.dispose();
         SindesiUI sindesi = new SindesiUI();
         
         sindesi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         sindesi.setSize(700,600);
         sindesi.setVisible(true);
-        this.setVisible(false);
     }//GEN-LAST:event_jMenu5MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       paraggeliaWindow temp = new paraggeliaWindow(pinakas);
+       temp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+       temp.setVisible(true);
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,6 +187,7 @@ public class ResultsScreenUI extends javax.swing.JFrame {
     private javax.swing.JButton alphabetical;
     private javax.swing.JButton cost;
     private javax.swing.JButton distance;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

@@ -184,7 +184,7 @@ public class SindesiUI extends javax.swing.JFrame {
                 Pelatis pelatis1 = new Pelatis(copy[0],copy[1],copy[2],copy[3],copy[4],copy[5],Integer.parseInt(copy[6]),Integer.parseInt(copy[7]),Boolean.parseBoolean(copy[8]));
                 PelatisUI pelatis = new PelatisUI(pelatis1);
                 pelatis.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                pelatis.setSize(900,600);
+                pelatis.setSize(1200,600);
                 pelatis.setVisible(true);
             }
             else

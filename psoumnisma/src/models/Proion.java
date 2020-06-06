@@ -14,6 +14,8 @@ public class Proion {
         this.price = price;
     }
     
+    public Proion(){};
+    
     public void saveChanges(String name, int quantity, String description, double price){
         
         this.name = name;
