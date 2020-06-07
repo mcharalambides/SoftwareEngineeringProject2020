@@ -25,7 +25,8 @@ import models.*;
 
 public class PelatisUI extends javax.swing.JFrame {
 
-    /** Creates new form PelatisUI */
+    private Pelatis pelatis;
+    
     public PelatisUI(Pelatis pelatis) {
         initComponents();
         offersPanel.setVisible(false);
@@ -37,6 +38,7 @@ public class PelatisUI extends javax.swing.JFrame {
         this.password.setText(pelatis.getPassword());
         this.c1.setText(Integer.toString(pelatis.getCoordinates1()));
         this.c2.setText(Integer.toString(pelatis.getCoordinates2()));
+        this.pelatis = pelatis;
          
         if(pelatis.getPremium()){
             offersPanel.setVisible(true);
@@ -407,26 +409,11 @@ public class PelatisUI extends javax.swing.JFrame {
     }//GEN-LAST:event_action1
 
     private void action2(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_action2
-        ListaUI listUI = new ListaUI();
+        ListaUI listUI = new ListaUI(this.pelatis.getName());
         listUI.setSize(900,600);
         listUI.setVisible(true);
         listUI.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        try{
-        BufferedReader csvReader = new BufferedReader(new FileReader("src/proionta_magaziwn.txt"));
-        String row;
-        Set<String> shopItems = new HashSet<String>();
-         while ((row = csvReader.readLine())!= null) {
-             shopItems.add(row.split(",")[1]); 
-         }
-
-        JComboBox combobox = new JComboBox(shopItems.toArray());
-        TableColumn column1 = listUI.jTable1.getColumnModel().getColumn(0);
-        column1.setCellEditor(new DefaultCellEditor(combobox));
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
     }//GEN-LAST:event_action2
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked

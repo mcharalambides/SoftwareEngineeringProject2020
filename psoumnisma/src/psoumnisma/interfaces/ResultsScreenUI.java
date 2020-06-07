@@ -1,8 +1,10 @@
 
 package psoumnisma.interfaces;
 import java.awt.Window;
+import java.util.List;
 import javax.swing.JFrame;
 import models.PinakasApotelesmatwn;
+import models.Proion;
 import pop_up_windows.paraggeliaWindow;
 
 /**
@@ -17,7 +19,7 @@ public class ResultsScreenUI extends javax.swing.JFrame {
         this.pinakas = pinakas;
         for(int i=0; i<pinakas.getSizeOfPinaka(); i++){
             this.resultsTable.setValueAt(pinakas.getStoreName(i),i,1);
-            this.resultsTable.setValueAt(String.valueOf(pinakas.getCost(i)),i,2);
+            this.resultsTable.setValueAt(String.format("%.2f", pinakas.getCost(i)),i,2);
             this.resultsTable.setValueAt(pinakas.getStoreRating(i),i,4);
         }
     }
@@ -172,7 +174,12 @@ public class ResultsScreenUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu5MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       paraggeliaWindow temp = new paraggeliaWindow(pinakas);
+       int row = resultsTable.getSelectedRow();
+       String magazatoras = resultsTable.getValueAt(row,1).toString();
+       List<Proion> shoppingList = pinakas.getShoppingList();
+       
+        
+       paraggeliaWindow temp = new paraggeliaWindow(magazatoras,shoppingList,pinakas.getCustomerName());
        temp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
        temp.setVisible(true);
        

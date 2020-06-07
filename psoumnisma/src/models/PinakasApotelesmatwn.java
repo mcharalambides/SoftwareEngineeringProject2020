@@ -14,23 +14,28 @@ public class PinakasApotelesmatwn {
     private List<Double> cost;
     private List<Double> distance;
     private List<Integer> storeRating;
-    
-    public PinakasApotelesmatwn(Lista lista){
+    private List<Proion>  shoppingList; 
+    private String customerName;
+
+
+    public PinakasApotelesmatwn(Lista lista, Paraggelia paraggelia){
         storeName = new ArrayList<String>();
         cost = new ArrayList<Double>();
         distance = new ArrayList<Double>();
         storeRating = new ArrayList<Integer>();
         storeImage = new ArrayList<ImageIcon>();
+        shoppingList = paraggelia.getItemList();
+        customerName = paraggelia.getCustomerName();
         
         if(lista.getItemList().size()>0){
-            checkMagazatores(lista);
+            checkMagazatores(lista,paraggelia);
             setRating();
             setStoreImage();
         }
         
     }
     
-    public void checkMagazatores(Lista lista) {
+    public void checkMagazatores(Lista lista, Paraggelia paraggelia) {
         try{
         BufferedReader csvReader = new BufferedReader(new FileReader("src/proionta_magaziwn.txt"));
         String row,shopName;
@@ -75,7 +80,7 @@ public class PinakasApotelesmatwn {
         while(i<this.storeName.size()){
             while ((row = csvReader.readLine())!= null)
                 if(row.split(",")[0].equals(this.storeName.get(i)) && lista.getItemList().contains(row.split(",")[1]))
-                    cost = cost + Double.parseDouble(row.split(",")[4]);       
+                    cost = cost + Double.parseDouble(row.split(",")[4])*paraggelia.getQuantityPeritem(row.split(",")[1]);       
             
             this.cost.add(cost);
             csvReader.reset();
@@ -93,6 +98,14 @@ public class PinakasApotelesmatwn {
 
     public String getStoreName(int i) {
         return storeName.get(i);
+    }
+    
+    public String getCustomerName() {
+        return customerName;
+    }
+    
+    public List<Proion> getShoppingList() {
+        return shoppingList;
     }
     
     public void setStoreImage(){

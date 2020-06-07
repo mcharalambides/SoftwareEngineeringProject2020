@@ -5,12 +5,22 @@
  */
 package psoumnisma.interfaces;
 import java.awt.Window;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import models.Lista;
 import models.PinakasApotelesmatwn;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.text.TableView.TableRow;
+import models.Paraggelia;
+import models.Proion;
 
 
 /**
@@ -19,12 +29,16 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ListaUI extends javax.swing.JFrame {
     Lista list;
+    String pelatis;
 
     /**
      * Creates new form ListaUI
      */
-    public ListaUI() {
+    public ListaUI(String pelatis) {
         initComponents();
+        
+        this.pelatis = pelatis;
+        getAllItems();
         
     }
 
@@ -46,6 +60,7 @@ public class ListaUI extends javax.swing.JFrame {
         submit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -65,25 +80,10 @@ public class ListaUI extends javax.swing.JFrame {
         jLabel5.setText("Min Rating");
 
         jTextField1.setText("0");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
         jTextField2.setText("0");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
 
         jTextField3.setText("0");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
 
         submit.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         submit.setText("SUBMIT");
@@ -105,6 +105,14 @@ public class ListaUI extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton1.setText("Add row");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Home");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -159,11 +167,13 @@ public class ListaUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(submit)
-                .addGap(223, 223, 223))
+                .addGap(273, 273, 273))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,35 +188,47 @@ public class ListaUI extends javax.swing.JFrame {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(100, 100, 100)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(123, 123, 123)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(171, 171, 171)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(submit)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addGap(48, 48, 48))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void getAllItems(){
+        try{
+        BufferedReader csvReader = new BufferedReader(new FileReader("src/proionta_magaziwn.txt"));
+        String row;
+        Set<String> shopItems = new HashSet<String>();
+         while ((row = csvReader.readLine())!= null) {
+             shopItems.add(row.split(",")[1]); 
+         }
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
+        JComboBox combobox = new JComboBox(shopItems.toArray());
+        TableColumn column1 = this.jTable1.getColumnModel().getColumn(0);
+        column1.setCellEditor(new DefaultCellEditor(combobox));
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
     private void HomeClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeClicked
         this.dispose();
     }//GEN-LAST:event_HomeClicked
 
     private void CreateListClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CreateListClicked
         this.dispose();
-        ListaUI listaCopy = new ListaUI();
+        ListaUI listaCopy = new ListaUI(pelatis);
         listaCopy.setVisible(true);
     }//GEN-LAST:event_CreateListClicked
 
@@ -220,9 +242,25 @@ public class ListaUI extends javax.swing.JFrame {
             list.add(jTable1.getValueAt(i,0).toString());
         }
         
+        Proion proion;
+        Paraggelia paraggelia = new Paraggelia();
+        
+        int i=0,quantity=0,j=0;
+        for(String item:list){
+            for(i=j;i<list.size();i++){
+                if(item.equals(list.get(i)))
+                    quantity++;
+            }
+            if(!paraggelia.getItemNames().contains(item))
+                paraggelia.setItemList(new Proion(item,quantity));
+            quantity=0;
+            j++; 
+        }
+        
+        paraggelia.setCustomerName(pelatis);
         
         Lista lista = new Lista(Double.parseDouble(jTextField3.getText()),Integer.parseInt(jTextField1.getText()),Integer.parseInt(jTextField2.getText()),list);
-        PinakasApotelesmatwn pinakas = new PinakasApotelesmatwn(lista);
+        PinakasApotelesmatwn pinakas = new PinakasApotelesmatwn(lista,paraggelia);
         ResultsScreenUI results = new ResultsScreenUI(pinakas);
         results.setVisible(true);
         results.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -241,42 +279,15 @@ public class ListaUI extends javax.swing.JFrame {
         sindesi.setVisible(true);
     }//GEN-LAST:event_jMenu5MouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListaUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListaUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListaUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListaUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ListaUI().setVisible(true);
-            }
-        });
-    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        DefaultTableModel model =(DefaultTableModel)this.jTable1.getModel();
+        model.addRow(new Object[1]);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
