@@ -28,8 +28,8 @@ import models.Proion;
  * @author Christos
  */
 public class ListaUI extends javax.swing.JFrame {
-    Lista list;
-    String pelatis;
+    private Lista list;
+    private String pelatis;
 
     /**
      * Creates new form ListaUI
