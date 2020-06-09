@@ -67,6 +67,11 @@ public class AddProductUI extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton1.setText("SAVE");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         remove.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         remove.setText("-");
@@ -159,6 +164,19 @@ public class AddProductUI extends javax.swing.JFrame {
         sindesi.setVisible(true);
     }//GEN-LAST:event_jMenu4MouseClicked
 
+    private void addProduct(String name,int quantity,String description, double price){
+        //Prosthiki neou proiontos
+    }
+    
+    private void saveChanges(String name,int quantity,String description, double price){
+        //Perasma proionton me nees times
+    }
+    
+    private void deleteProduct(){
+        //Diagrafi proiontos apo tin lista proiontwn tou magazatora
+        
+    }
+     
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
 
         DefaultTableModel model = (DefaultTableModel)this.productsTable.getModel();
@@ -169,6 +187,10 @@ public class AddProductUI extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel)this.productsTable.getModel();
         model.removeRow(this.productsTable.getSelectedRow());
     }//GEN-LAST:event_removeActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
