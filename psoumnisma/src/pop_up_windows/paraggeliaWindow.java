@@ -6,9 +6,14 @@
 package pop_up_windows;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import models.*;
 import java.util.*;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,10 +21,11 @@ import java.util.*;
  */
 public class paraggeliaWindow extends javax.swing.JFrame {
     
-    String magazatoras;
-    List<Proion> shoppingList;
-    String customerName;
-    List<Double> costs;
+    private String magazatoras;
+    private List<Proion> shoppingList;
+    private String customerName;
+    private List<Double> costs;
+    private double completeCost;
     
     public paraggeliaWindow(String magazatoras,List<Proion> shoppingList, String customerName) {
         initComponents();
@@ -28,14 +34,24 @@ public class paraggeliaWindow extends javax.swing.JFrame {
         this.shoppingList = shoppingList;
         this.customerName = customerName;
         
+        //Vriskw ta kostoi gia kathe proion
         getCost();
         
-        for(int i=0; i<shoppingList.size(); i++){
-            this.orderTable.setValueAt(shoppingList.get(i).getName(), i,0);
-            this.orderTable.setValueAt(shoppingList.get(i).getQuantity(), i,1);
-            this.orderTable.setValueAt(costs.get(i), i,2);
-        }
+        //Dimiourgia tou pianka
+        DefaultTableModel table = new DefaultTableModel();
+        table.addColumn("Product");
+        table.addColumn("Quantity");
+        table.addColumn("Cost(Euro)");
         
+        for(int i=0; i<shoppingList.size(); i++){
+            table.addRow(new Object[]{shoppingList.get(i).getName(),shoppingList.get(i).getQuantity(),costs.get(i)} );
+            completeCost = completeCost + costs.get(i)*shoppingList.get(i).getQuantity();
+        }
+
+        this.orderTable.setModel(table);
+        this.totalCost.setText(String.valueOf(String.format("%.2f", completeCost)));
+        
+        //Vriskw ta stoixeia tou magazatora
         getMagazatoras(); 
     }
 
@@ -84,7 +100,7 @@ public class paraggeliaWindow extends javax.swing.JFrame {
         }
         csvReader.reset();
         }
-            
+         
         
         }
         catch(Exception e){
@@ -117,6 +133,11 @@ public class paraggeliaWindow extends javax.swing.JFrame {
 
         delivery.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         delivery.setText("DELIVERY");
+        delivery.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deliveryActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel2.setText("Address:");
@@ -201,6 +222,33 @@ public class paraggeliaWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void deliveryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliveryActionPerformed
+      try{
+          BufferedWriter writer = new BufferedWriter( new FileWriter("src/paraggelies.txt", true));
+          
+            String str1 = this.customerName;
+            String str2 = this.magazatoras;
+            String str3 = this.telephone.getText();
+            String str4 = totalCost.getText();
+            String str5 = orderTable.getValueAt(0,0).toString();
+            String str6 = orderTable.getValueAt(0,1).toString();
+            
+            for(int i=1; i<orderTable.getRowCount(); i++){
+                str5 = str5 + " " + orderTable.getValueAt(i,0);
+                str6 = str6 + " " + orderTable.getValueAt(i,1); 
+            }
+            
+            writer.write(str1 +","+ str2+","+str3+","+str4+","+str5+","+str6);  
+            writer.newLine();
+            writer.close();  
+              
+        } 
+        catch (IOException e) {  
+            e.printStackTrace();  
+        }  
+        JOptionPane.showMessageDialog(null, "Order Added Successfully");
+    }//GEN-LAST:event_deliveryActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

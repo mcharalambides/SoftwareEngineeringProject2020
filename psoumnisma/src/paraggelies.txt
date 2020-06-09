@@ -1,0 +1,5 @@
+customerName,storeName,storeTelehphoneNumber,cost,itemList,quantityPerITem
+1 1,Papantoniou,6985471425,2.80,Αυγά Γάλα,1 1
+Marios Charalambides,Georgiou,6985472425,3.40,Αυγά Ψωμί,2 1
+Christos Costa,Αραπης,6985471225,3.85,Ψωμί Δημητριακά,2 1
+Christos Costa,Papantoniou,6985471425,3.70,Ψωμί Δημητριακά,2 1

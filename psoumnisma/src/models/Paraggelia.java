@@ -10,7 +10,8 @@ public class Paraggelia {
    private int customerTelehphoneNumber;
    List<Proion> itemList;
    private double cost;
-   private int quantityPeritem;
+   private String address ;
+   private int quantityPerItem;
    
    public Paraggelia(){
        itemList = new ArrayList<Proion>();
@@ -46,10 +47,6 @@ public class Paraggelia {
 
     public void setCost(double cost) {
         this.cost = cost;
-    }
-
-    public void setQuantityPeritem(int quantityPeritem) {
-        this.quantityPeritem = quantityPeritem;
     }
     
     public List<Proion> getItemList() {
