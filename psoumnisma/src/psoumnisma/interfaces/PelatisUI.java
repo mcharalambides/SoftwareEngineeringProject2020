@@ -399,7 +399,7 @@ public class PelatisUI extends javax.swing.JFrame {
     }//GEN-LAST:event_action1
 
     private void action2(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_action2
-        ListaUI listUI = new ListaUI(this.pelatis.getName() + " " + this.pelatis.getSurname());
+        ListaUI listUI = new ListaUI(this.pelatis.getEmail());
         listUI.setSize(900,600);
         listUI.setVisible(true);
         listUI.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

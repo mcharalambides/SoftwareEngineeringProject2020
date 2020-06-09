@@ -3,6 +3,7 @@ package psoumnisma.interfaces;
 import java.awt.Window;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import models.PinakasApotelesmatwn;
 import models.Proion;
 import pop_up_windows.paraggeliaWindow;
@@ -174,7 +175,8 @@ public class ResultsScreenUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu5MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       int row = resultsTable.getSelectedRow();
+       try{
+        int row = resultsTable.getSelectedRow();
        String magazatoras = resultsTable.getValueAt(row,1).toString();
        List<Proion> shoppingList = pinakas.getShoppingList();
        
@@ -182,6 +184,10 @@ public class ResultsScreenUI extends javax.swing.JFrame {
        paraggeliaWindow temp = new paraggeliaWindow(magazatoras,shoppingList,pinakas.getCustomerName());
        temp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
        temp.setVisible(true);
+       }
+       catch(Exception e){
+           JOptionPane.showMessageDialog(null, "Select a Row");
+       }
        
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -1,5 +1,5 @@
 customerName,storeName,storeTelehphoneNumber,cost,itemList,quantityPerITem
-1 1,Papantoniou,6985471425,2.80,Αυγά Γάλα,1 1
-Marios Charalambides,Georgiou,6985472425,3.40,Αυγά Ψωμί,2 1
-Christos Costa,Αραπης,6985471225,3.85,Ψωμί Δημητριακά,2 1
-Christos Costa,Papantoniou,6985471425,3.70,Ψωμί Δημητριακά,2 1
+mcharalampidis@ceid.upatras.gr,Papantoniou,6985471425,2.80,Γάλα Αυγά,1 1
+mcharalampidis@ceid.upatras.gr,Sklavenitis,6985412563,2.35,Γάλα Ψωμί,1 2
+chkosta@ceid.upatras.gr,Papantoniou,6985471425,3.40,Αυγά Ψωμί,2 1
+chkosta@ceid.upatras.gr,Papantoniou,6985471425,4.10,Αυγά Γάλα,2 1

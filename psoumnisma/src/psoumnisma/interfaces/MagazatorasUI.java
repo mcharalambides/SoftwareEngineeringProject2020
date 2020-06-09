@@ -8,7 +8,9 @@ package psoumnisma.interfaces;
 import java.awt.Window;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import pop_up_windows.addOffer;
@@ -375,28 +377,52 @@ public class MagazatorasUI extends javax.swing.JFrame {
         vw.setVisible(true);
        
     }//GEN-LAST:event_jButton6MouseClicked
+    
     private void getParaggeleia() {
         try{       
-              BufferedReader in = new BufferedReader(new FileReader("src/aitisi.txt"));
-                                    
+              BufferedReader in = new BufferedReader(new FileReader("src/paraggelies.txt"));
+              BufferedReader in2 = new BufferedReader(new FileReader("src/xristes.txt"));
+              in2.mark(10000);
+              List<String> emails = new ArrayList<String>();
+              List<String> names = new ArrayList<String>();
+              List<String> addresses = new ArrayList<String>();
+              List<String> telephones = new ArrayList<String>();
               DefaultTableModel table = new DefaultTableModel();
+              String data[];
               table.addColumn("Full Name");
               table.addColumn("Address");
               table.addColumn("Telephone");
-              table.addColumn("List");
          
               String row;
               int i=0;
-              while ((row = in.readLine())!= null) {
-              table.insertRow(i, row.split(",").clone());
-              i++;
-       
-              }
+              in.readLine();
+              
+              //Vres ola ta atoma pou ekanas paraggelia
+              while ((row = in.readLine())!= null)
+                  if(row.split(",")[1].equals(magazatoras.getName()))
+                        emails.add(row.split(",")[0]);       
+              
+              //Vres ta stoixeia tous 
+              for(String name:emails){
+                while ((row = in2.readLine())!= null){
+                  data = row.split(",");
+                  if(data[2].equals(name)){
+                      names.add(data[0] + " " + data[1]);
+                      telephones.add(data[4]);
+                      addresses.add(data[5]);
+                    }
+                }
+                
+                in2.reset();
+                }
+              
+              //Gemisma tou pinaka
+              for(i=0; i<names.size();i++)
+                  table.addRow(new Object[]{names.get(i), addresses.get(i), telephones.get(i)});
+                
               
               this.jTable1.setModel(table);
-      
-                
-                
+           
         }
         
         catch(Exception e){
