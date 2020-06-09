@@ -230,6 +230,7 @@ public class ListaUI extends javax.swing.JFrame {
         this.dispose();
         ListaUI listaCopy = new ListaUI(pelatis);
         listaCopy.setVisible(true);
+        listaCopy.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_CreateListClicked
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed

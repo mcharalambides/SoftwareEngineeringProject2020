@@ -339,7 +339,7 @@ public class MagazatorasUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         addOffer offer = new addOffer(this.shopName.getText());
         
-        offer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        offer.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         offer.setSize(900,600);
         offer.setVisible(true);
     }//GEN-LAST:event_jMenu2MouseClicked
@@ -359,7 +359,7 @@ public class MagazatorasUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         AddProductUI addproduct = new AddProductUI(magazatoras.getProductList());
         
-        addproduct.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        addproduct.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         addproduct.setSize(1000, 600);
         addproduct.setVisible(true);
     }//GEN-LAST:event_jMenu3MouseClicked
@@ -372,7 +372,7 @@ public class MagazatorasUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         view vw = new view();
         
-        vw.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vw.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         vw.setSize(900,600);
         vw.setVisible(true);
        

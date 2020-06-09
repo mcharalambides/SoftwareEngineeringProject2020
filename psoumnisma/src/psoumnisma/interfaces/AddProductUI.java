@@ -11,18 +11,19 @@ import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import models.Proion;
+import pop_up_windows.addOffer;
 
 /**
  *
  * @author Pavlos
  */
 public class AddProductUI extends javax.swing.JFrame {
-
-    /**
-     * Creates new form AddProductUI
-     */
+    
+    List<Proion> productList;
+    
     public AddProductUI(List<Proion> productList) {
         initComponents();
+        this.productList = productList;
         test(productList);
     }
     
@@ -100,12 +101,22 @@ public class AddProductUI extends javax.swing.JFrame {
         });
 
         jMenu1.setText("Home");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HomeClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Add offer");
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Product List");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Log out");
@@ -191,6 +202,17 @@ public class AddProductUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void HomeClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeClicked
+        this.dispose();
+    }//GEN-LAST:event_HomeClicked
+
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+        this.dispose();
+        AddProductUI copy = new AddProductUI(productList);
+        copy.setVisible(true);
+        copy.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_jMenu3MouseClicked
 
     /**
      * @param args the command line arguments
